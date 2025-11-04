@@ -1,0 +1,56 @@
+syntax = "proto3";
+package appsets.api.client.v1;
+option go_package = "github.com/appsets/protocol/go/client/v1;clientpb";
+
+import "google/api/annotations.proto";
+import "google/protobuf/wrappers.proto";
+
+message AccountEmail {
+  string email = 1;
+  string password = 2;
+  map<string, string> vars = 3;
+}
+
+message AuthenticateEmailRequest {
+  AccountEmail account = 1;
+  google.protobuf.BoolValue create = 2;
+  string username = 3;
+}
+
+message Session {
+  bool created = 1;
+  string token = 3;
+  string refresh_token = 4;
+  UserInfo user_info = 5;
+}
+
+message UserInfo {
+  int64 id = 1;
+  string username = 2;
+  string display_name = 3;
+  string avatar_url = 4;
+  string email = 5;
+  string phone = 6;
+}
+
+
+
+message RefreshTokenRequest {
+  string token = 1;
+}
+
+service AccountService {
+  rpc AuthenticateEmail(AuthenticateEmailRequest) returns (Session) {
+    option (google.api.http) = {
+      post: "/api/v1/authenticate/email"
+      body: "*"
+    };
+  }
+  rpc RefreshToken(RefreshTokenRequest) returns (Session) {
+    option (google.api.http) = {
+      post: "/api/v1/authenticate/token/refresh"
+      body: "*"
+    };
+  }
+}
+

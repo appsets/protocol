@@ -1,0 +1,19 @@
+syntax = "proto3";
+package appsets.api.client.v1;
+
+option go_package = "github.com/appsets/protocol/go/client/v1;clientpb";
+
+import "google/api/annotations.proto";
+
+message StringMessage {
+  string value = 1;
+}
+
+service EchoService {
+  rpc Echo(StringMessage) returns (StringMessage) {
+    option (google.api.http) = {
+      post: "/api/v1/echo"
+      body: "*"
+    };
+  }
+}
