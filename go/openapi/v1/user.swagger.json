@@ -18,7 +18,7 @@
   "paths": {
     "/api/v1/users/create": {
       "post": {
-        "operationId": "UserService_Create",
+        "operationId": "UserService_CreateUser",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -50,7 +50,7 @@
     },
     "/api/v1/users/get": {
       "post": {
-        "operationId": "UserService_Get",
+        "operationId": "UserService_GetUser",
         "responses": {
           "200": {
             "description": "A successful response.",

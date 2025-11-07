@@ -21,8 +21,8 @@ import (
 
 // UserServiceHTTPService is the server API for UserService service.
 type UserServiceHTTPService interface {
-	Get(context.Context, *GetUserRequest) (*GetUserResponse, error)
-	Create(context.Context, *CreateUserRequest) (*CreateUserResponse, error)
+	GetUser(context.Context, *GetUserRequest) (*GetUserResponse, error)
+	CreateUser(context.Context, *CreateUserRequest) (*CreateUserResponse, error)
 }
 
 // UserServiceHTTPConverter has a function to convert UserServiceHTTPService interface to http.HandlerFunc.
@@ -37,8 +37,8 @@ func NewUserServiceHTTPConverter(srv UserServiceHTTPService) *UserServiceHTTPCon
 	}
 }
 
-// Get returns UserServiceHTTPService interface's Get converted to http.HandlerFunc.
-func (h *UserServiceHTTPConverter) Get(onError func(ctx context.Context, w http.ResponseWriter, r *http.Request, arg, ret proto.Message, err error), interceptors ...grpc.UnaryServerInterceptor) http.HandlerFunc {
+// GetUser returns UserServiceHTTPService interface's GetUser converted to http.HandlerFunc.
+func (h *UserServiceHTTPConverter) GetUser(onError func(ctx context.Context, w http.ResponseWriter, r *http.Request, arg, ret proto.Message, err error), interceptors ...grpc.UnaryServerInterceptor) http.HandlerFunc {
 	if onError == nil {
 		onError = func(ctx context.Context, w http.ResponseWriter, r *http.Request, arg, ret proto.Message, err error) {
 			if err != nil {
@@ -128,11 +128,11 @@ func (h *UserServiceHTTPConverter) Get(onError func(ctx context.Context, w http.
 
 		info := &grpc.UnaryServerInfo{
 			Server:     h.srv,
-			FullMethod: "/appsets.openapi.v1.UserService/Get",
+			FullMethod: "/appsets.openapi.v1.UserService/GetUser",
 		}
 
 		handler := func(c context.Context, req interface{}) (interface{}, error) {
-			return h.srv.Get(c, req.(*GetUserRequest))
+			return h.srv.GetUser(c, req.(*GetUserRequest))
 		}
 
 		iret, err := chained(ctx, arg, info, handler)
@@ -143,7 +143,7 @@ func (h *UserServiceHTTPConverter) Get(onError func(ctx context.Context, w http.
 
 		ret, ok := iret.(*GetUserResponse)
 		if !ok {
-			onError(ctx, w, r, arg, nil, fmt.Errorf("/appsets.openapi.v1.UserService/Get: interceptors have not return GetUserResponse"))
+			onError(ctx, w, r, arg, nil, fmt.Errorf("/appsets.openapi.v1.UserService/GetUser: interceptors have not return GetUserResponse"))
 			return
 		}
 
@@ -179,13 +179,13 @@ func (h *UserServiceHTTPConverter) Get(onError func(ctx context.Context, w http.
 	})
 }
 
-// GetWithName returns Service name, Method name and UserServiceHTTPService interface's Get converted to http.HandlerFunc.
-func (h *UserServiceHTTPConverter) GetWithName(onError func(ctx context.Context, w http.ResponseWriter, r *http.Request, arg, ret proto.Message, err error), interceptors ...grpc.UnaryServerInterceptor) (string, string, http.HandlerFunc) {
-	return "UserService", "Get", h.Get(onError, interceptors...)
+// GetUserWithName returns Service name, Method name and UserServiceHTTPService interface's GetUser converted to http.HandlerFunc.
+func (h *UserServiceHTTPConverter) GetUserWithName(onError func(ctx context.Context, w http.ResponseWriter, r *http.Request, arg, ret proto.Message, err error), interceptors ...grpc.UnaryServerInterceptor) (string, string, http.HandlerFunc) {
+	return "UserService", "GetUser", h.GetUser(onError, interceptors...)
 }
 
-// GetHTTPRule returns HTTP method, path and UserServiceHTTPService interface's Get converted to http.HandlerFunc.
-func (h *UserServiceHTTPConverter) GetHTTPRule(onError func(ctx context.Context, w http.ResponseWriter, r *http.Request, arg, ret proto.Message, err error), interceptors ...grpc.UnaryServerInterceptor) (string, string, http.HandlerFunc) {
+// GetUserHTTPRule returns HTTP method, path and UserServiceHTTPService interface's GetUser converted to http.HandlerFunc.
+func (h *UserServiceHTTPConverter) GetUserHTTPRule(onError func(ctx context.Context, w http.ResponseWriter, r *http.Request, arg, ret proto.Message, err error), interceptors ...grpc.UnaryServerInterceptor) (string, string, http.HandlerFunc) {
 	if onError == nil {
 		onError = func(ctx context.Context, w http.ResponseWriter, r *http.Request, arg, ret proto.Message, err error) {
 			if err != nil {
@@ -275,11 +275,11 @@ func (h *UserServiceHTTPConverter) GetHTTPRule(onError func(ctx context.Context,
 
 		info := &grpc.UnaryServerInfo{
 			Server:     h.srv,
-			FullMethod: "/appsets.openapi.v1.UserService/Get",
+			FullMethod: "/appsets.openapi.v1.UserService/GetUser",
 		}
 
 		handler := func(c context.Context, req interface{}) (interface{}, error) {
-			return h.srv.Get(c, req.(*GetUserRequest))
+			return h.srv.GetUser(c, req.(*GetUserRequest))
 		}
 
 		iret, err := chained(ctx, arg, info, handler)
@@ -290,7 +290,7 @@ func (h *UserServiceHTTPConverter) GetHTTPRule(onError func(ctx context.Context,
 
 		ret, ok := iret.(*GetUserResponse)
 		if !ok {
-			onError(ctx, w, r, arg, nil, fmt.Errorf("/appsets.openapi.v1.UserService/Get: interceptors have not return GetUserResponse"))
+			onError(ctx, w, r, arg, nil, fmt.Errorf("/appsets.openapi.v1.UserService/GetUser: interceptors have not return GetUserResponse"))
 			return
 		}
 
@@ -326,8 +326,8 @@ func (h *UserServiceHTTPConverter) GetHTTPRule(onError func(ctx context.Context,
 	})
 }
 
-// Create returns UserServiceHTTPService interface's Create converted to http.HandlerFunc.
-func (h *UserServiceHTTPConverter) Create(onError func(ctx context.Context, w http.ResponseWriter, r *http.Request, arg, ret proto.Message, err error), interceptors ...grpc.UnaryServerInterceptor) http.HandlerFunc {
+// CreateUser returns UserServiceHTTPService interface's CreateUser converted to http.HandlerFunc.
+func (h *UserServiceHTTPConverter) CreateUser(onError func(ctx context.Context, w http.ResponseWriter, r *http.Request, arg, ret proto.Message, err error), interceptors ...grpc.UnaryServerInterceptor) http.HandlerFunc {
 	if onError == nil {
 		onError = func(ctx context.Context, w http.ResponseWriter, r *http.Request, arg, ret proto.Message, err error) {
 			if err != nil {
@@ -417,11 +417,11 @@ func (h *UserServiceHTTPConverter) Create(onError func(ctx context.Context, w ht
 
 		info := &grpc.UnaryServerInfo{
 			Server:     h.srv,
-			FullMethod: "/appsets.openapi.v1.UserService/Create",
+			FullMethod: "/appsets.openapi.v1.UserService/CreateUser",
 		}
 
 		handler := func(c context.Context, req interface{}) (interface{}, error) {
-			return h.srv.Create(c, req.(*CreateUserRequest))
+			return h.srv.CreateUser(c, req.(*CreateUserRequest))
 		}
 
 		iret, err := chained(ctx, arg, info, handler)
@@ -432,7 +432,7 @@ func (h *UserServiceHTTPConverter) Create(onError func(ctx context.Context, w ht
 
 		ret, ok := iret.(*CreateUserResponse)
 		if !ok {
-			onError(ctx, w, r, arg, nil, fmt.Errorf("/appsets.openapi.v1.UserService/Create: interceptors have not return CreateUserResponse"))
+			onError(ctx, w, r, arg, nil, fmt.Errorf("/appsets.openapi.v1.UserService/CreateUser: interceptors have not return CreateUserResponse"))
 			return
 		}
 
@@ -468,13 +468,13 @@ func (h *UserServiceHTTPConverter) Create(onError func(ctx context.Context, w ht
 	})
 }
 
-// CreateWithName returns Service name, Method name and UserServiceHTTPService interface's Create converted to http.HandlerFunc.
-func (h *UserServiceHTTPConverter) CreateWithName(onError func(ctx context.Context, w http.ResponseWriter, r *http.Request, arg, ret proto.Message, err error), interceptors ...grpc.UnaryServerInterceptor) (string, string, http.HandlerFunc) {
-	return "UserService", "Create", h.Create(onError, interceptors...)
+// CreateUserWithName returns Service name, Method name and UserServiceHTTPService interface's CreateUser converted to http.HandlerFunc.
+func (h *UserServiceHTTPConverter) CreateUserWithName(onError func(ctx context.Context, w http.ResponseWriter, r *http.Request, arg, ret proto.Message, err error), interceptors ...grpc.UnaryServerInterceptor) (string, string, http.HandlerFunc) {
+	return "UserService", "CreateUser", h.CreateUser(onError, interceptors...)
 }
 
-// CreateHTTPRule returns HTTP method, path and UserServiceHTTPService interface's Create converted to http.HandlerFunc.
-func (h *UserServiceHTTPConverter) CreateHTTPRule(onError func(ctx context.Context, w http.ResponseWriter, r *http.Request, arg, ret proto.Message, err error), interceptors ...grpc.UnaryServerInterceptor) (string, string, http.HandlerFunc) {
+// CreateUserHTTPRule returns HTTP method, path and UserServiceHTTPService interface's CreateUser converted to http.HandlerFunc.
+func (h *UserServiceHTTPConverter) CreateUserHTTPRule(onError func(ctx context.Context, w http.ResponseWriter, r *http.Request, arg, ret proto.Message, err error), interceptors ...grpc.UnaryServerInterceptor) (string, string, http.HandlerFunc) {
 	if onError == nil {
 		onError = func(ctx context.Context, w http.ResponseWriter, r *http.Request, arg, ret proto.Message, err error) {
 			if err != nil {
@@ -564,11 +564,11 @@ func (h *UserServiceHTTPConverter) CreateHTTPRule(onError func(ctx context.Conte
 
 		info := &grpc.UnaryServerInfo{
 			Server:     h.srv,
-			FullMethod: "/appsets.openapi.v1.UserService/Create",
+			FullMethod: "/appsets.openapi.v1.UserService/CreateUser",
 		}
 
 		handler := func(c context.Context, req interface{}) (interface{}, error) {
-			return h.srv.Create(c, req.(*CreateUserRequest))
+			return h.srv.CreateUser(c, req.(*CreateUserRequest))
 		}
 
 		iret, err := chained(ctx, arg, info, handler)
@@ -579,7 +579,7 @@ func (h *UserServiceHTTPConverter) CreateHTTPRule(onError func(ctx context.Conte
 
 		ret, ok := iret.(*CreateUserResponse)
 		if !ok {
-			onError(ctx, w, r, arg, nil, fmt.Errorf("/appsets.openapi.v1.UserService/Create: interceptors have not return CreateUserResponse"))
+			onError(ctx, w, r, arg, nil, fmt.Errorf("/appsets.openapi.v1.UserService/CreateUser: interceptors have not return CreateUserResponse"))
 			return
 		}
 

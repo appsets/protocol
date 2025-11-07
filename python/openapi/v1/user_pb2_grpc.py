@@ -14,13 +14,13 @@ class UserServiceStub(object):
         Args:
             channel: A grpc.Channel.
         """
-        self.Get = channel.unary_unary(
-                '/appsets.openapi.v1.UserService/Get',
+        self.GetUser = channel.unary_unary(
+                '/appsets.openapi.v1.UserService/GetUser',
                 request_serializer=openapi_dot_v1_dot_user__pb2.GetUserRequest.SerializeToString,
                 response_deserializer=openapi_dot_v1_dot_user__pb2.GetUserResponse.FromString,
                 _registered_method=True)
-        self.Create = channel.unary_unary(
-                '/appsets.openapi.v1.UserService/Create',
+        self.CreateUser = channel.unary_unary(
+                '/appsets.openapi.v1.UserService/CreateUser',
                 request_serializer=openapi_dot_v1_dot_user__pb2.CreateUserRequest.SerializeToString,
                 response_deserializer=openapi_dot_v1_dot_user__pb2.CreateUserResponse.FromString,
                 _registered_method=True)
@@ -29,13 +29,13 @@ class UserServiceStub(object):
 class UserServiceServicer(object):
     """Missing associated documentation comment in .proto file."""
 
-    def Get(self, request, context):
+    def GetUser(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def Create(self, request, context):
+    def CreateUser(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -44,13 +44,13 @@ class UserServiceServicer(object):
 
 def add_UserServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'Get': grpc.unary_unary_rpc_method_handler(
-                    servicer.Get,
+            'GetUser': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetUser,
                     request_deserializer=openapi_dot_v1_dot_user__pb2.GetUserRequest.FromString,
                     response_serializer=openapi_dot_v1_dot_user__pb2.GetUserResponse.SerializeToString,
             ),
-            'Create': grpc.unary_unary_rpc_method_handler(
-                    servicer.Create,
+            'CreateUser': grpc.unary_unary_rpc_method_handler(
+                    servicer.CreateUser,
                     request_deserializer=openapi_dot_v1_dot_user__pb2.CreateUserRequest.FromString,
                     response_serializer=openapi_dot_v1_dot_user__pb2.CreateUserResponse.SerializeToString,
             ),
@@ -66,7 +66,7 @@ class UserService(object):
     """Missing associated documentation comment in .proto file."""
 
     @staticmethod
-    def Get(request,
+    def GetUser(request,
             target,
             options=(),
             channel_credentials=None,
@@ -79,7 +79,7 @@ class UserService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/appsets.openapi.v1.UserService/Get',
+            '/appsets.openapi.v1.UserService/GetUser',
             openapi_dot_v1_dot_user__pb2.GetUserRequest.SerializeToString,
             openapi_dot_v1_dot_user__pb2.GetUserResponse.FromString,
             options,
@@ -93,7 +93,7 @@ class UserService(object):
             _registered_method=True)
 
     @staticmethod
-    def Create(request,
+    def CreateUser(request,
             target,
             options=(),
             channel_credentials=None,
@@ -106,7 +106,7 @@ class UserService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/appsets.openapi.v1.UserService/Create',
+            '/appsets.openapi.v1.UserService/CreateUser',
             openapi_dot_v1_dot_user__pb2.CreateUserRequest.SerializeToString,
             openapi_dot_v1_dot_user__pb2.CreateUserResponse.FromString,
             options,

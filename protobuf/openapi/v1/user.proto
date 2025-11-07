@@ -38,14 +38,14 @@ message CreateUserResponse {
 }
 
 service UserService {
-  rpc Get(GetUserRequest) returns (GetUserResponse) {
+  rpc GetUser(GetUserRequest) returns (GetUserResponse) {
     option (google.api.http) = {
       post: "/api/v1/users/get"
       body: "*"
     };
   }
 
-  rpc Create(CreateUserRequest) returns (CreateUserResponse) {
+  rpc CreateUser(CreateUserRequest) returns (CreateUserResponse) {
     option (google.api.http) = {
       post: "/api/v1/users/create"
       body: "*"

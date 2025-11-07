@@ -146,17 +146,17 @@ export declare const UserRoleSchema: GenEnum<UserRole>;
  */
 export declare const UserService: GenService<{
   /**
-   * @generated from rpc appsets.openapi.v1.UserService.Get
+   * @generated from rpc appsets.openapi.v1.UserService.GetUser
    */
-  get: {
+  getUser: {
     methodKind: "unary";
     input: typeof GetUserRequestSchema;
     output: typeof GetUserResponseSchema;
   },
   /**
-   * @generated from rpc appsets.openapi.v1.UserService.Create
+   * @generated from rpc appsets.openapi.v1.UserService.CreateUser
    */
-  create: {
+  createUser: {
     methodKind: "unary";
     input: typeof CreateUserRequestSchema;
     output: typeof CreateUserResponseSchema;

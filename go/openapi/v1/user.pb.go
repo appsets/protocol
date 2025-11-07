@@ -310,10 +310,11 @@ const file_openapi_v1_user_proto_rawDesc = "" +
 	"\x0fUSER_ROLE_ADMIN\x10\x01\x12\x17\n" +
 	"\x13USER_ROLE_DEVELOPER\x10\x02\x12\x18\n" +
 	"\x14USER_ROLE_MAINTAINER\x10\x03\x12\x16\n" +
-	"\x12USER_ROLE_READONLY\x10\x042\xf5\x01\n" +
-	"\vUserService\x12l\n" +
-	"\x03Get\x12\".appsets.openapi.v1.GetUserRequest\x1a#.appsets.openapi.v1.GetUserResponse\"\x1c\x82\xd3\xe4\x93\x02\x16:\x01*\"\x11/api/v1/users/get\x12x\n" +
-	"\x06Create\x12%.appsets.openapi.v1.CreateUserRequest\x1a&.appsets.openapi.v1.CreateUserResponse\"\x1f\x82\xd3\xe4\x93\x02\x19:\x01*\"\x14/api/v1/users/createB5Z3github.com/appsets/protocol/go/openapi/v1;openapipbb\x06proto3"
+	"\x12USER_ROLE_READONLY\x10\x042\xfd\x01\n" +
+	"\vUserService\x12p\n" +
+	"\aGetUser\x12\".appsets.openapi.v1.GetUserRequest\x1a#.appsets.openapi.v1.GetUserResponse\"\x1c\x82\xd3\xe4\x93\x02\x16:\x01*\"\x11/api/v1/users/get\x12|\n" +
+	"\n" +
+	"CreateUser\x12%.appsets.openapi.v1.CreateUserRequest\x1a&.appsets.openapi.v1.CreateUserResponse\"\x1f\x82\xd3\xe4\x93\x02\x19:\x01*\"\x14/api/v1/users/createB5Z3github.com/appsets/protocol/go/openapi/v1;openapipbb\x06proto3"
 
 var (
 	file_openapi_v1_user_proto_rawDescOnce sync.Once
@@ -340,10 +341,10 @@ var file_openapi_v1_user_proto_goTypes = []any{
 var file_openapi_v1_user_proto_depIdxs = []int32{
 	5, // 0: appsets.openapi.v1.GetUserResponse.error:type_name -> google.rpc.Status
 	5, // 1: appsets.openapi.v1.CreateUserResponse.error:type_name -> google.rpc.Status
-	1, // 2: appsets.openapi.v1.UserService.Get:input_type -> appsets.openapi.v1.GetUserRequest
-	3, // 3: appsets.openapi.v1.UserService.Create:input_type -> appsets.openapi.v1.CreateUserRequest
-	2, // 4: appsets.openapi.v1.UserService.Get:output_type -> appsets.openapi.v1.GetUserResponse
-	4, // 5: appsets.openapi.v1.UserService.Create:output_type -> appsets.openapi.v1.CreateUserResponse
+	1, // 2: appsets.openapi.v1.UserService.GetUser:input_type -> appsets.openapi.v1.GetUserRequest
+	3, // 3: appsets.openapi.v1.UserService.CreateUser:input_type -> appsets.openapi.v1.CreateUserRequest
+	2, // 4: appsets.openapi.v1.UserService.GetUser:output_type -> appsets.openapi.v1.GetUserResponse
+	4, // 5: appsets.openapi.v1.UserService.CreateUser:output_type -> appsets.openapi.v1.CreateUserResponse
 	4, // [4:6] is the sub-list for method output_type
 	2, // [2:4] is the sub-list for method input_type
 	2, // [2:2] is the sub-list for extension type_name
