@@ -1,8 +1,10 @@
 syntax = "proto3";
+// buf:lint:ignore PACKAGE_DIRECTORY_MATCH
 package appsets.openapi.v1;
 option go_package = "github.com/appsets/protocol/go/openapi/v1;openapipb";
 
 import "google/api/annotations.proto";
+import "google/rpc/status.proto";
 
 message CreateOrganizationRequest {
   string id = 1;
@@ -13,6 +15,7 @@ message CreateOrganizationRequest {
 }
 
 message CreateOrganizationResponse {
+  google.rpc.Status error = 1;
 }
 
 service OrganizationService {

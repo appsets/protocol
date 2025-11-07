@@ -21,8 +21,12 @@ import (
 
 // AccountServiceHTTPService is the server API for AccountService service.
 type AccountServiceHTTPService interface {
-	AuthenticateEmail(context.Context, *AuthenticateEmailRequest) (*Session, error)
-	RefreshToken(context.Context, *RefreshTokenRequest) (*Session, error)
+	// buf:lint:ignore RPC_REQUEST_RESPONSE_UNIQUE
+	// buf:lint:ignore RPC_RESPONSE_STANDARD_NAME
+	AuthenticateEmail(context.Context, *AuthenticateEmailRequest) (*SessionResponse, error)
+	// buf:lint:ignore RPC_REQUEST_RESPONSE_UNIQUE
+	// buf:lint:ignore RPC_RESPONSE_STANDARD_NAME
+	RefreshToken(context.Context, *RefreshTokenRequest) (*SessionResponse, error)
 }
 
 // AccountServiceHTTPConverter has a function to convert AccountServiceHTTPService interface to http.HandlerFunc.
@@ -38,6 +42,9 @@ func NewAccountServiceHTTPConverter(srv AccountServiceHTTPService) *AccountServi
 }
 
 // AuthenticateEmail returns AccountServiceHTTPService interface's AuthenticateEmail converted to http.HandlerFunc.
+//
+// buf:lint:ignore RPC_REQUEST_RESPONSE_UNIQUE
+// buf:lint:ignore RPC_RESPONSE_STANDARD_NAME
 func (h *AccountServiceHTTPConverter) AuthenticateEmail(onError func(ctx context.Context, w http.ResponseWriter, r *http.Request, arg, ret proto.Message, err error), interceptors ...grpc.UnaryServerInterceptor) http.HandlerFunc {
 	if onError == nil {
 		onError = func(ctx context.Context, w http.ResponseWriter, r *http.Request, arg, ret proto.Message, err error) {
@@ -141,9 +148,9 @@ func (h *AccountServiceHTTPConverter) AuthenticateEmail(onError func(ctx context
 			return
 		}
 
-		ret, ok := iret.(*Session)
+		ret, ok := iret.(*SessionResponse)
 		if !ok {
-			onError(ctx, w, r, arg, nil, fmt.Errorf("/appsets.api.v1.AccountService/AuthenticateEmail: interceptors have not return Session"))
+			onError(ctx, w, r, arg, nil, fmt.Errorf("/appsets.api.v1.AccountService/AuthenticateEmail: interceptors have not return SessionResponse"))
 			return
 		}
 
@@ -180,11 +187,17 @@ func (h *AccountServiceHTTPConverter) AuthenticateEmail(onError func(ctx context
 }
 
 // AuthenticateEmailWithName returns Service name, Method name and AccountServiceHTTPService interface's AuthenticateEmail converted to http.HandlerFunc.
+//
+// buf:lint:ignore RPC_REQUEST_RESPONSE_UNIQUE
+// buf:lint:ignore RPC_RESPONSE_STANDARD_NAME
 func (h *AccountServiceHTTPConverter) AuthenticateEmailWithName(onError func(ctx context.Context, w http.ResponseWriter, r *http.Request, arg, ret proto.Message, err error), interceptors ...grpc.UnaryServerInterceptor) (string, string, http.HandlerFunc) {
 	return "AccountService", "AuthenticateEmail", h.AuthenticateEmail(onError, interceptors...)
 }
 
 // AuthenticateEmailHTTPRule returns HTTP method, path and AccountServiceHTTPService interface's AuthenticateEmail converted to http.HandlerFunc.
+//
+// buf:lint:ignore RPC_REQUEST_RESPONSE_UNIQUE
+// buf:lint:ignore RPC_RESPONSE_STANDARD_NAME
 func (h *AccountServiceHTTPConverter) AuthenticateEmailHTTPRule(onError func(ctx context.Context, w http.ResponseWriter, r *http.Request, arg, ret proto.Message, err error), interceptors ...grpc.UnaryServerInterceptor) (string, string, http.HandlerFunc) {
 	if onError == nil {
 		onError = func(ctx context.Context, w http.ResponseWriter, r *http.Request, arg, ret proto.Message, err error) {
@@ -288,9 +301,9 @@ func (h *AccountServiceHTTPConverter) AuthenticateEmailHTTPRule(onError func(ctx
 			return
 		}
 
-		ret, ok := iret.(*Session)
+		ret, ok := iret.(*SessionResponse)
 		if !ok {
-			onError(ctx, w, r, arg, nil, fmt.Errorf("/appsets.api.v1.AccountService/AuthenticateEmail: interceptors have not return Session"))
+			onError(ctx, w, r, arg, nil, fmt.Errorf("/appsets.api.v1.AccountService/AuthenticateEmail: interceptors have not return SessionResponse"))
 			return
 		}
 
@@ -327,6 +340,9 @@ func (h *AccountServiceHTTPConverter) AuthenticateEmailHTTPRule(onError func(ctx
 }
 
 // RefreshToken returns AccountServiceHTTPService interface's RefreshToken converted to http.HandlerFunc.
+//
+// buf:lint:ignore RPC_REQUEST_RESPONSE_UNIQUE
+// buf:lint:ignore RPC_RESPONSE_STANDARD_NAME
 func (h *AccountServiceHTTPConverter) RefreshToken(onError func(ctx context.Context, w http.ResponseWriter, r *http.Request, arg, ret proto.Message, err error), interceptors ...grpc.UnaryServerInterceptor) http.HandlerFunc {
 	if onError == nil {
 		onError = func(ctx context.Context, w http.ResponseWriter, r *http.Request, arg, ret proto.Message, err error) {
@@ -430,9 +446,9 @@ func (h *AccountServiceHTTPConverter) RefreshToken(onError func(ctx context.Cont
 			return
 		}
 
-		ret, ok := iret.(*Session)
+		ret, ok := iret.(*SessionResponse)
 		if !ok {
-			onError(ctx, w, r, arg, nil, fmt.Errorf("/appsets.api.v1.AccountService/RefreshToken: interceptors have not return Session"))
+			onError(ctx, w, r, arg, nil, fmt.Errorf("/appsets.api.v1.AccountService/RefreshToken: interceptors have not return SessionResponse"))
 			return
 		}
 
@@ -469,11 +485,17 @@ func (h *AccountServiceHTTPConverter) RefreshToken(onError func(ctx context.Cont
 }
 
 // RefreshTokenWithName returns Service name, Method name and AccountServiceHTTPService interface's RefreshToken converted to http.HandlerFunc.
+//
+// buf:lint:ignore RPC_REQUEST_RESPONSE_UNIQUE
+// buf:lint:ignore RPC_RESPONSE_STANDARD_NAME
 func (h *AccountServiceHTTPConverter) RefreshTokenWithName(onError func(ctx context.Context, w http.ResponseWriter, r *http.Request, arg, ret proto.Message, err error), interceptors ...grpc.UnaryServerInterceptor) (string, string, http.HandlerFunc) {
 	return "AccountService", "RefreshToken", h.RefreshToken(onError, interceptors...)
 }
 
 // RefreshTokenHTTPRule returns HTTP method, path and AccountServiceHTTPService interface's RefreshToken converted to http.HandlerFunc.
+//
+// buf:lint:ignore RPC_REQUEST_RESPONSE_UNIQUE
+// buf:lint:ignore RPC_RESPONSE_STANDARD_NAME
 func (h *AccountServiceHTTPConverter) RefreshTokenHTTPRule(onError func(ctx context.Context, w http.ResponseWriter, r *http.Request, arg, ret proto.Message, err error), interceptors ...grpc.UnaryServerInterceptor) (string, string, http.HandlerFunc) {
 	if onError == nil {
 		onError = func(ctx context.Context, w http.ResponseWriter, r *http.Request, arg, ret proto.Message, err error) {
@@ -577,9 +599,9 @@ func (h *AccountServiceHTTPConverter) RefreshTokenHTTPRule(onError func(ctx cont
 			return
 		}
 
-		ret, ok := iret.(*Session)
+		ret, ok := iret.(*SessionResponse)
 		if !ok {
-			onError(ctx, w, r, arg, nil, fmt.Errorf("/appsets.api.v1.AccountService/RefreshToken: interceptors have not return Session"))
+			onError(ctx, w, r, arg, nil, fmt.Errorf("/appsets.api.v1.AccountService/RefreshToken: interceptors have not return SessionResponse"))
 			return
 		}
 

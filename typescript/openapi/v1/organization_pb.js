@@ -2,14 +2,17 @@
 // @generated from file openapi/v1/organization.proto (package appsets.openapi.v1, syntax proto3)
 /* eslint-disable */
 
+// buf:lint:ignore PACKAGE_DIRECTORY_MATCH
+
 import { fileDesc, messageDesc, serviceDesc } from "@bufbuild/protobuf/codegenv2";
 import { file_google_api_annotations } from "../../google/api/annotations_pb";
+import { file_google_rpc_status } from "../../google/rpc/status_pb";
 
 /**
  * Describes the file openapi/v1/organization.proto.
  */
 export const file_openapi_v1_organization = /*@__PURE__*/
-  fileDesc("Ch1vcGVuYXBpL3YxL29yZ2FuaXphdGlvbi5wcm90bxISYXBwc2V0cy5vcGVuYXBpLnYxImkKGUNyZWF0ZU9yZ2FuaXphdGlvblJlcXVlc3QSCgoCaWQYASABKAkSDAoEY29kZRgCIAEoCRIMCgRuYW1lGAMgASgJEhAKCG93bmVkX2J5GAQgASgJEhIKCmNyZWF0ZWRfYnkYBSABKAkiHAoaQ3JlYXRlT3JnYW5pemF0aW9uUmVzcG9uc2UyswEKE09yZ2FuaXphdGlvblNlcnZpY2USmwEKEkNyZWF0ZU9yZ2FuaXphdGlvbhItLmFwcHNldHMub3BlbmFwaS52MS5DcmVhdGVPcmdhbml6YXRpb25SZXF1ZXN0Gi4uYXBwc2V0cy5vcGVuYXBpLnYxLkNyZWF0ZU9yZ2FuaXphdGlvblJlc3BvbnNlIiaC0+STAiA6ASoiGy9hcGkvdjEvb3JnYW5pemF0aW9uL2NyZWF0ZUI1WjNnaXRodWIuY29tL2FwcHNldHMvcHJvdG9jb2wvZ28vb3BlbmFwaS92MTtvcGVuYXBpcGJiBnByb3RvMw", [file_google_api_annotations]);
+  fileDesc("Ch1vcGVuYXBpL3YxL29yZ2FuaXphdGlvbi5wcm90bxISYXBwc2V0cy5vcGVuYXBpLnYxImkKGUNyZWF0ZU9yZ2FuaXphdGlvblJlcXVlc3QSCgoCaWQYASABKAkSDAoEY29kZRgCIAEoCRIMCgRuYW1lGAMgASgJEhAKCG93bmVkX2J5GAQgASgJEhIKCmNyZWF0ZWRfYnkYBSABKAkiPwoaQ3JlYXRlT3JnYW5pemF0aW9uUmVzcG9uc2USIQoFZXJyb3IYASABKAsyEi5nb29nbGUucnBjLlN0YXR1czKzAQoTT3JnYW5pemF0aW9uU2VydmljZRKbAQoSQ3JlYXRlT3JnYW5pemF0aW9uEi0uYXBwc2V0cy5vcGVuYXBpLnYxLkNyZWF0ZU9yZ2FuaXphdGlvblJlcXVlc3QaLi5hcHBzZXRzLm9wZW5hcGkudjEuQ3JlYXRlT3JnYW5pemF0aW9uUmVzcG9uc2UiJoLT5JMCIDoBKiIbL2FwaS92MS9vcmdhbml6YXRpb24vY3JlYXRlQjVaM2dpdGh1Yi5jb20vYXBwc2V0cy9wcm90b2NvbC9nby9vcGVuYXBpL3YxO29wZW5hcGlwYmIGcHJvdG8z", [file_google_api_annotations, file_google_rpc_status]);
 
 /**
  * Describes the message appsets.openapi.v1.CreateOrganizationRequest.

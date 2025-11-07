@@ -17,12 +17,12 @@ class AccountServiceStub(object):
         self.AuthenticateEmail = channel.unary_unary(
                 '/appsets.api.v1.AccountService/AuthenticateEmail',
                 request_serializer=api_dot_v1_dot_account__pb2.AuthenticateEmailRequest.SerializeToString,
-                response_deserializer=api_dot_v1_dot_account__pb2.Session.FromString,
+                response_deserializer=api_dot_v1_dot_account__pb2.SessionResponse.FromString,
                 _registered_method=True)
         self.RefreshToken = channel.unary_unary(
                 '/appsets.api.v1.AccountService/RefreshToken',
                 request_serializer=api_dot_v1_dot_account__pb2.RefreshTokenRequest.SerializeToString,
-                response_deserializer=api_dot_v1_dot_account__pb2.Session.FromString,
+                response_deserializer=api_dot_v1_dot_account__pb2.SessionResponse.FromString,
                 _registered_method=True)
 
 
@@ -30,13 +30,17 @@ class AccountServiceServicer(object):
     """Missing associated documentation comment in .proto file."""
 
     def AuthenticateEmail(self, request, context):
-        """Missing associated documentation comment in .proto file."""
+        """buf:lint:ignore RPC_REQUEST_RESPONSE_UNIQUE
+        buf:lint:ignore RPC_RESPONSE_STANDARD_NAME
+        """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def RefreshToken(self, request, context):
-        """Missing associated documentation comment in .proto file."""
+        """buf:lint:ignore RPC_REQUEST_RESPONSE_UNIQUE
+        buf:lint:ignore RPC_RESPONSE_STANDARD_NAME
+        """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
@@ -47,12 +51,12 @@ def add_AccountServiceServicer_to_server(servicer, server):
             'AuthenticateEmail': grpc.unary_unary_rpc_method_handler(
                     servicer.AuthenticateEmail,
                     request_deserializer=api_dot_v1_dot_account__pb2.AuthenticateEmailRequest.FromString,
-                    response_serializer=api_dot_v1_dot_account__pb2.Session.SerializeToString,
+                    response_serializer=api_dot_v1_dot_account__pb2.SessionResponse.SerializeToString,
             ),
             'RefreshToken': grpc.unary_unary_rpc_method_handler(
                     servicer.RefreshToken,
                     request_deserializer=api_dot_v1_dot_account__pb2.RefreshTokenRequest.FromString,
-                    response_serializer=api_dot_v1_dot_account__pb2.Session.SerializeToString,
+                    response_serializer=api_dot_v1_dot_account__pb2.SessionResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -81,7 +85,7 @@ class AccountService(object):
             target,
             '/appsets.api.v1.AccountService/AuthenticateEmail',
             api_dot_v1_dot_account__pb2.AuthenticateEmailRequest.SerializeToString,
-            api_dot_v1_dot_account__pb2.Session.FromString,
+            api_dot_v1_dot_account__pb2.SessionResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -108,7 +112,7 @@ class AccountService(object):
             target,
             '/appsets.api.v1.AccountService/RefreshToken',
             api_dot_v1_dot_account__pb2.RefreshTokenRequest.SerializeToString,
-            api_dot_v1_dot_account__pb2.Session.FromString,
+            api_dot_v1_dot_account__pb2.SessionResponse.FromString,
             options,
             channel_credentials,
             insecure,

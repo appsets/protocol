@@ -2,14 +2,17 @@
 // @generated from file openapi/v1/schedule.proto (package appsets.openapi.v1, syntax proto3)
 /* eslint-disable */
 
+// buf:lint:ignore PACKAGE_DIRECTORY_MATCH
+
 import { fileDesc, messageDesc, serviceDesc } from "@bufbuild/protobuf/codegenv2";
 import { file_google_api_annotations } from "../../google/api/annotations_pb";
+import { file_google_rpc_status } from "../../google/rpc/status_pb";
 
 /**
  * Describes the file openapi/v1/schedule.proto.
  */
 export const file_openapi_v1_schedule = /*@__PURE__*/
-  fileDesc("ChlvcGVuYXBpL3YxL3NjaGVkdWxlLnByb3RvEhJhcHBzZXRzLm9wZW5hcGkudjEiGgoYVmFsaWRhdGVQdXJjaGFzZXNSZXF1ZXN0IhsKGVZhbGlkYXRlUHVyY2hhc2VzUmVzcG9uc2UyswEKD1NjaGVkdWxlU2VydmljZRKfAQoRVmFsaWRhdGVQdXJjaGFzZXMSLC5hcHBzZXRzLm9wZW5hcGkudjEuVmFsaWRhdGVQdXJjaGFzZXNSZXF1ZXN0Gi0uYXBwc2V0cy5vcGVuYXBpLnYxLlZhbGlkYXRlUHVyY2hhc2VzUmVzcG9uc2UiLYLT5JMCJzoBKiIiL2FwaS92MS9zY2hlZHVsZS9wdXJjaGFzZS92YWxpZGF0ZUI1WjNnaXRodWIuY29tL2FwcHNldHMvcHJvdG9jb2wvZ28vb3BlbmFwaS92MTtvcGVuYXBpcGJiBnByb3RvMw", [file_google_api_annotations]);
+  fileDesc("ChlvcGVuYXBpL3YxL3NjaGVkdWxlLnByb3RvEhJhcHBzZXRzLm9wZW5hcGkudjEiGgoYVmFsaWRhdGVQdXJjaGFzZXNSZXF1ZXN0Ij4KGVZhbGlkYXRlUHVyY2hhc2VzUmVzcG9uc2USIQoFZXJyb3IYASABKAsyEi5nb29nbGUucnBjLlN0YXR1czKzAQoPU2NoZWR1bGVTZXJ2aWNlEp8BChFWYWxpZGF0ZVB1cmNoYXNlcxIsLmFwcHNldHMub3BlbmFwaS52MS5WYWxpZGF0ZVB1cmNoYXNlc1JlcXVlc3QaLS5hcHBzZXRzLm9wZW5hcGkudjEuVmFsaWRhdGVQdXJjaGFzZXNSZXNwb25zZSItgtPkkwInOgEqIiIvYXBpL3YxL3NjaGVkdWxlL3B1cmNoYXNlL3ZhbGlkYXRlQjVaM2dpdGh1Yi5jb20vYXBwc2V0cy9wcm90b2NvbC9nby9vcGVuYXBpL3YxO29wZW5hcGlwYmIGcHJvdG8z", [file_google_api_annotations, file_google_rpc_status]);
 
 /**
  * Describes the message appsets.openapi.v1.ValidatePurchasesRequest.

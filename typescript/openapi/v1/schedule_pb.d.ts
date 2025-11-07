@@ -2,8 +2,11 @@
 // @generated from file openapi/v1/schedule.proto (package appsets.openapi.v1, syntax proto3)
 /* eslint-disable */
 
+// buf:lint:ignore PACKAGE_DIRECTORY_MATCH
+
 import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
 import type { Message } from "@bufbuild/protobuf";
+import type { Status } from "../../google/rpc/status_pb";
 
 /**
  * Describes the file openapi/v1/schedule.proto.
@@ -26,6 +29,10 @@ export declare const ValidatePurchasesRequestSchema: GenMessage<ValidatePurchase
  * @generated from message appsets.openapi.v1.ValidatePurchasesResponse
  */
 export declare type ValidatePurchasesResponse = Message<"appsets.openapi.v1.ValidatePurchasesResponse"> & {
+  /**
+   * @generated from field: google.rpc.Status error = 1;
+   */
+  error?: Status;
 };
 
 /**

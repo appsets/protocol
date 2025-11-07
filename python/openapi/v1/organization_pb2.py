@@ -23,9 +23,10 @@ _sym_db = _symbol_database.Default()
 
 
 from google.api import annotations_pb2 as google_dot_api_dot_annotations__pb2
+from google.rpc import status_pb2 as google_dot_rpc_dot_status__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1dopenapi/v1/organization.proto\x12\x12\x61ppsets.openapi.v1\x1a\x1cgoogle/api/annotations.proto\"\x8d\x01\n\x19\x43reateOrganizationRequest\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n\x04\x63ode\x18\x02 \x01(\tR\x04\x63ode\x12\x12\n\x04name\x18\x03 \x01(\tR\x04name\x12\x19\n\x08owned_by\x18\x04 \x01(\tR\x07ownedBy\x12\x1d\n\ncreated_by\x18\x05 \x01(\tR\tcreatedBy\"\x1c\n\x1a\x43reateOrganizationResponse2\xb3\x01\n\x13OrganizationService\x12\x9b\x01\n\x12\x43reateOrganization\x12-.appsets.openapi.v1.CreateOrganizationRequest\x1a..appsets.openapi.v1.CreateOrganizationResponse\"&\x82\xd3\xe4\x93\x02 \"\x1b/api/v1/organization/create:\x01*B5Z3github.com/appsets/protocol/go/openapi/v1;openapipbb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1dopenapi/v1/organization.proto\x12\x12\x61ppsets.openapi.v1\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/rpc/status.proto\"\x8d\x01\n\x19\x43reateOrganizationRequest\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n\x04\x63ode\x18\x02 \x01(\tR\x04\x63ode\x12\x12\n\x04name\x18\x03 \x01(\tR\x04name\x12\x19\n\x08owned_by\x18\x04 \x01(\tR\x07ownedBy\x12\x1d\n\ncreated_by\x18\x05 \x01(\tR\tcreatedBy\"F\n\x1a\x43reateOrganizationResponse\x12(\n\x05\x65rror\x18\x01 \x01(\x0b\x32\x12.google.rpc.StatusR\x05\x65rror2\xb3\x01\n\x13OrganizationService\x12\x9b\x01\n\x12\x43reateOrganization\x12-.appsets.openapi.v1.CreateOrganizationRequest\x1a..appsets.openapi.v1.CreateOrganizationResponse\"&\x82\xd3\xe4\x93\x02 \"\x1b/api/v1/organization/create:\x01*B5Z3github.com/appsets/protocol/go/openapi/v1;openapipbb\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -35,10 +36,10 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['DESCRIPTOR']._serialized_options = b'Z3github.com/appsets/protocol/go/openapi/v1;openapipb'
   _globals['_ORGANIZATIONSERVICE'].methods_by_name['CreateOrganization']._loaded_options = None
   _globals['_ORGANIZATIONSERVICE'].methods_by_name['CreateOrganization']._serialized_options = b'\202\323\344\223\002 \"\033/api/v1/organization/create:\001*'
-  _globals['_CREATEORGANIZATIONREQUEST']._serialized_start=84
-  _globals['_CREATEORGANIZATIONREQUEST']._serialized_end=225
-  _globals['_CREATEORGANIZATIONRESPONSE']._serialized_start=227
-  _globals['_CREATEORGANIZATIONRESPONSE']._serialized_end=255
-  _globals['_ORGANIZATIONSERVICE']._serialized_start=258
-  _globals['_ORGANIZATIONSERVICE']._serialized_end=437
+  _globals['_CREATEORGANIZATIONREQUEST']._serialized_start=109
+  _globals['_CREATEORGANIZATIONREQUEST']._serialized_end=250
+  _globals['_CREATEORGANIZATIONRESPONSE']._serialized_start=252
+  _globals['_CREATEORGANIZATIONRESPONSE']._serialized_end=322
+  _globals['_ORGANIZATIONSERVICE']._serialized_start=325
+  _globals['_ORGANIZATIONSERVICE']._serialized_end=504
 # @@protoc_insertion_point(module_scope)

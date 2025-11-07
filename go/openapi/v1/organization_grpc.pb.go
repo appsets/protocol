@@ -4,6 +4,8 @@
 // - protoc             (unknown)
 // source: openapi/v1/organization.proto
 
+// buf:lint:ignore PACKAGE_DIRECTORY_MATCH
+
 package openapipb
 
 import (

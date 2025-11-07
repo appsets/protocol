@@ -1,4 +1,5 @@
 syntax = "proto3";
+// buf:lint:ignore PACKAGE_DIRECTORY_MATCH
 package appsets.openapi.v1;
 option go_package = "github.com/appsets/protocol/go/openapi/v1;openapipb";
 

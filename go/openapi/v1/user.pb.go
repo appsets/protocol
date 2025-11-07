@@ -4,10 +4,13 @@
 // 	protoc        (unknown)
 // source: openapi/v1/user.proto
 
+// buf:lint:ignore PACKAGE_DIRECTORY_MATCH
+
 package openapipb
 
 import (
 	_ "google.golang.org/genproto/googleapis/api/annotations"
+	status "google.golang.org/genproto/googleapis/rpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -25,28 +28,28 @@ const (
 type UserRole int32
 
 const (
-	UserRole_USER_ROLE_UNKNOWN    UserRole = 0
-	UserRole_USER_ROLE_ADMIN      UserRole = 1 // All access
-	UserRole_USER_ROLE_DEVELOPER  UserRole = 2 // Best for developers, also enables APIs and API explorer
-	UserRole_USER_ROLE_MAINTAINER UserRole = 3 // Best for users who regularly update player information.
-	UserRole_USER_ROLE_READONLY   UserRole = 4 // Read-only role for those only need to view data
+	UserRole_USER_ROLE_UNSPECIFIED UserRole = 0
+	UserRole_USER_ROLE_ADMIN       UserRole = 1 // All access
+	UserRole_USER_ROLE_DEVELOPER   UserRole = 2 // Best for developers, also enables APIs and API explorer
+	UserRole_USER_ROLE_MAINTAINER  UserRole = 3 // Best for users who regularly update player information.
+	UserRole_USER_ROLE_READONLY    UserRole = 4 // Read-only role for those only need to view data
 )
 
 // Enum value maps for UserRole.
 var (
 	UserRole_name = map[int32]string{
-		0: "USER_ROLE_UNKNOWN",
+		0: "USER_ROLE_UNSPECIFIED",
 		1: "USER_ROLE_ADMIN",
 		2: "USER_ROLE_DEVELOPER",
 		3: "USER_ROLE_MAINTAINER",
 		4: "USER_ROLE_READONLY",
 	}
 	UserRole_value = map[string]int32{
-		"USER_ROLE_UNKNOWN":    0,
-		"USER_ROLE_ADMIN":      1,
-		"USER_ROLE_DEVELOPER":  2,
-		"USER_ROLE_MAINTAINER": 3,
-		"USER_ROLE_READONLY":   4,
+		"USER_ROLE_UNSPECIFIED": 0,
+		"USER_ROLE_ADMIN":       1,
+		"USER_ROLE_DEVELOPER":   2,
+		"USER_ROLE_MAINTAINER":  3,
+		"USER_ROLE_READONLY":    4,
 	}
 )
 
@@ -123,6 +126,7 @@ func (x *GetUserRequest) GetName() string {
 
 type GetUserResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
+	Error         *status.Status         `protobuf:"bytes,1,opt,name=error,proto3" json:"error,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -155,6 +159,13 @@ func (x *GetUserResponse) ProtoReflect() protoreflect.Message {
 // Deprecated: Use GetUserResponse.ProtoReflect.Descriptor instead.
 func (*GetUserResponse) Descriptor() ([]byte, []int) {
 	return file_openapi_v1_user_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *GetUserResponse) GetError() *status.Status {
+	if x != nil {
+		return x.Error
+	}
+	return nil
 }
 
 type CreateUserRequest struct {
@@ -195,11 +206,12 @@ func (*CreateUserRequest) Descriptor() ([]byte, []int) {
 
 type CreateUserResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	Code          string                 `protobuf:"bytes,2,opt,name=code,proto3" json:"code,omitempty"`
-	DisplayName   string                 `protobuf:"bytes,3,opt,name=display_name,json=displayName,proto3" json:"display_name,omitempty"`
-	Email         string                 `protobuf:"bytes,4,opt,name=email,proto3" json:"email,omitempty"`
-	Phone         string                 `protobuf:"bytes,5,opt,name=phone,proto3" json:"phone,omitempty"`
+	Error         *status.Status         `protobuf:"bytes,1,opt,name=error,proto3" json:"error,omitempty"`
+	Id            string                 `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
+	Code          string                 `protobuf:"bytes,3,opt,name=code,proto3" json:"code,omitempty"`
+	DisplayName   string                 `protobuf:"bytes,4,opt,name=display_name,json=displayName,proto3" json:"display_name,omitempty"`
+	Email         string                 `protobuf:"bytes,5,opt,name=email,proto3" json:"email,omitempty"`
+	Phone         string                 `protobuf:"bytes,6,opt,name=phone,proto3" json:"phone,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -232,6 +244,13 @@ func (x *CreateUserResponse) ProtoReflect() protoreflect.Message {
 // Deprecated: Use CreateUserResponse.ProtoReflect.Descriptor instead.
 func (*CreateUserResponse) Descriptor() ([]byte, []int) {
 	return file_openapi_v1_user_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *CreateUserResponse) GetError() *status.Status {
+	if x != nil {
+		return x.Error
+	}
+	return nil
 }
 
 func (x *CreateUserResponse) GetId() string {
@@ -273,19 +292,21 @@ var File_openapi_v1_user_proto protoreflect.FileDescriptor
 
 const file_openapi_v1_user_proto_rawDesc = "" +
 	"\n" +
-	"\x15openapi/v1/user.proto\x12\x12appsets.openapi.v1\x1a\x1cgoogle/api/annotations.proto\"$\n" +
+	"\x15openapi/v1/user.proto\x12\x12appsets.openapi.v1\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/rpc/status.proto\"$\n" +
 	"\x0eGetUserRequest\x12\x12\n" +
-	"\x04name\x18\x01 \x01(\tR\x04name\"\x11\n" +
-	"\x0fGetUserResponse\"\x13\n" +
-	"\x11CreateUserRequest\"\x87\x01\n" +
-	"\x12CreateUserResponse\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
-	"\x04code\x18\x02 \x01(\tR\x04code\x12!\n" +
-	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12\x14\n" +
-	"\x05email\x18\x04 \x01(\tR\x05email\x12\x14\n" +
-	"\x05phone\x18\x05 \x01(\tR\x05phone*\x81\x01\n" +
-	"\bUserRole\x12\x15\n" +
-	"\x11USER_ROLE_UNKNOWN\x10\x00\x12\x13\n" +
+	"\x04name\x18\x01 \x01(\tR\x04name\";\n" +
+	"\x0fGetUserResponse\x12(\n" +
+	"\x05error\x18\x01 \x01(\v2\x12.google.rpc.StatusR\x05error\"\x13\n" +
+	"\x11CreateUserRequest\"\xb1\x01\n" +
+	"\x12CreateUserResponse\x12(\n" +
+	"\x05error\x18\x01 \x01(\v2\x12.google.rpc.StatusR\x05error\x12\x0e\n" +
+	"\x02id\x18\x02 \x01(\tR\x02id\x12\x12\n" +
+	"\x04code\x18\x03 \x01(\tR\x04code\x12!\n" +
+	"\fdisplay_name\x18\x04 \x01(\tR\vdisplayName\x12\x14\n" +
+	"\x05email\x18\x05 \x01(\tR\x05email\x12\x14\n" +
+	"\x05phone\x18\x06 \x01(\tR\x05phone*\x85\x01\n" +
+	"\bUserRole\x12\x19\n" +
+	"\x15USER_ROLE_UNSPECIFIED\x10\x00\x12\x13\n" +
 	"\x0fUSER_ROLE_ADMIN\x10\x01\x12\x17\n" +
 	"\x13USER_ROLE_DEVELOPER\x10\x02\x12\x18\n" +
 	"\x14USER_ROLE_MAINTAINER\x10\x03\x12\x16\n" +
@@ -314,17 +335,20 @@ var file_openapi_v1_user_proto_goTypes = []any{
 	(*GetUserResponse)(nil),    // 2: appsets.openapi.v1.GetUserResponse
 	(*CreateUserRequest)(nil),  // 3: appsets.openapi.v1.CreateUserRequest
 	(*CreateUserResponse)(nil), // 4: appsets.openapi.v1.CreateUserResponse
+	(*status.Status)(nil),      // 5: google.rpc.Status
 }
 var file_openapi_v1_user_proto_depIdxs = []int32{
-	1, // 0: appsets.openapi.v1.UserService.Get:input_type -> appsets.openapi.v1.GetUserRequest
-	3, // 1: appsets.openapi.v1.UserService.Create:input_type -> appsets.openapi.v1.CreateUserRequest
-	2, // 2: appsets.openapi.v1.UserService.Get:output_type -> appsets.openapi.v1.GetUserResponse
-	4, // 3: appsets.openapi.v1.UserService.Create:output_type -> appsets.openapi.v1.CreateUserResponse
-	2, // [2:4] is the sub-list for method output_type
-	0, // [0:2] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	5, // 0: appsets.openapi.v1.GetUserResponse.error:type_name -> google.rpc.Status
+	5, // 1: appsets.openapi.v1.CreateUserResponse.error:type_name -> google.rpc.Status
+	1, // 2: appsets.openapi.v1.UserService.Get:input_type -> appsets.openapi.v1.GetUserRequest
+	3, // 3: appsets.openapi.v1.UserService.Create:input_type -> appsets.openapi.v1.CreateUserRequest
+	2, // 4: appsets.openapi.v1.UserService.Get:output_type -> appsets.openapi.v1.GetUserResponse
+	4, // 5: appsets.openapi.v1.UserService.Create:output_type -> appsets.openapi.v1.CreateUserResponse
+	4, // [4:6] is the sub-list for method output_type
+	2, // [2:4] is the sub-list for method input_type
+	2, // [2:2] is the sub-list for extension type_name
+	2, // [2:2] is the sub-list for extension extendee
+	0, // [0:2] is the sub-list for field type_name
 }
 
 func init() { file_openapi_v1_user_proto_init() }

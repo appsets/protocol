@@ -2,8 +2,11 @@
 // @generated from file api/v1/account.proto (package appsets.api.v1, syntax proto3)
 /* eslint-disable */
 
+// buf:lint:ignore PACKAGE_DIRECTORY_MATCH
+
 import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
 import type { Message } from "@bufbuild/protobuf";
+import type { Status } from "../../google/rpc/status_pb";
 
 /**
  * Describes the file api/v1/account.proto.
@@ -63,11 +66,16 @@ export declare type AuthenticateEmailRequest = Message<"appsets.api.v1.Authentic
 export declare const AuthenticateEmailRequestSchema: GenMessage<AuthenticateEmailRequest>;
 
 /**
- * @generated from message appsets.api.v1.Session
+ * @generated from message appsets.api.v1.SessionResponse
  */
-export declare type Session = Message<"appsets.api.v1.Session"> & {
+export declare type SessionResponse = Message<"appsets.api.v1.SessionResponse"> & {
   /**
-   * @generated from field: bool created = 1;
+   * @generated from field: google.rpc.Status error = 1;
+   */
+  error?: Status;
+
+  /**
+   * @generated from field: bool created = 2;
    */
   created: boolean;
 
@@ -88,10 +96,10 @@ export declare type Session = Message<"appsets.api.v1.Session"> & {
 };
 
 /**
- * Describes the message appsets.api.v1.Session.
- * Use `create(SessionSchema)` to create a new message.
+ * Describes the message appsets.api.v1.SessionResponse.
+ * Use `create(SessionResponseSchema)` to create a new message.
  */
-export declare const SessionSchema: GenMessage<Session>;
+export declare const SessionResponseSchema: GenMessage<SessionResponse>;
 
 /**
  * @generated from message appsets.api.v1.UserInfo
@@ -155,20 +163,26 @@ export declare const RefreshTokenRequestSchema: GenMessage<RefreshTokenRequest>;
  */
 export declare const AccountService: GenService<{
   /**
+   * buf:lint:ignore RPC_REQUEST_RESPONSE_UNIQUE
+   * buf:lint:ignore RPC_RESPONSE_STANDARD_NAME
+   *
    * @generated from rpc appsets.api.v1.AccountService.AuthenticateEmail
    */
   authenticateEmail: {
     methodKind: "unary";
     input: typeof AuthenticateEmailRequestSchema;
-    output: typeof SessionSchema;
+    output: typeof SessionResponseSchema;
   },
   /**
+   * buf:lint:ignore RPC_REQUEST_RESPONSE_UNIQUE
+   * buf:lint:ignore RPC_RESPONSE_STANDARD_NAME
+   *
    * @generated from rpc appsets.api.v1.AccountService.RefreshToken
    */
   refreshToken: {
     methodKind: "unary";
     input: typeof RefreshTokenRequestSchema;
-    output: typeof SessionSchema;
+    output: typeof SessionResponseSchema;
   },
 }>;
 

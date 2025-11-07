@@ -23,9 +23,10 @@ _sym_db = _symbol_database.Default()
 
 
 from google.api import annotations_pb2 as google_dot_api_dot_annotations__pb2
+from google.rpc import status_pb2 as google_dot_rpc_dot_status__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x15openapi/v1/user.proto\x12\x12\x61ppsets.openapi.v1\x1a\x1cgoogle/api/annotations.proto\"$\n\x0eGetUserRequest\x12\x12\n\x04name\x18\x01 \x01(\tR\x04name\"\x11\n\x0fGetUserResponse\"\x13\n\x11\x43reateUserRequest\"\x87\x01\n\x12\x43reateUserResponse\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n\x04\x63ode\x18\x02 \x01(\tR\x04\x63ode\x12!\n\x0c\x64isplay_name\x18\x03 \x01(\tR\x0b\x64isplayName\x12\x14\n\x05\x65mail\x18\x04 \x01(\tR\x05\x65mail\x12\x14\n\x05phone\x18\x05 \x01(\tR\x05phone*\x81\x01\n\x08UserRole\x12\x15\n\x11USER_ROLE_UNKNOWN\x10\x00\x12\x13\n\x0fUSER_ROLE_ADMIN\x10\x01\x12\x17\n\x13USER_ROLE_DEVELOPER\x10\x02\x12\x18\n\x14USER_ROLE_MAINTAINER\x10\x03\x12\x16\n\x12USER_ROLE_READONLY\x10\x04\x32\xf5\x01\n\x0bUserService\x12l\n\x03Get\x12\".appsets.openapi.v1.GetUserRequest\x1a#.appsets.openapi.v1.GetUserResponse\"\x1c\x82\xd3\xe4\x93\x02\x16\"\x11/api/v1/users/get:\x01*\x12x\n\x06\x43reate\x12%.appsets.openapi.v1.CreateUserRequest\x1a&.appsets.openapi.v1.CreateUserResponse\"\x1f\x82\xd3\xe4\x93\x02\x19\"\x14/api/v1/users/create:\x01*B5Z3github.com/appsets/protocol/go/openapi/v1;openapipbb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x15openapi/v1/user.proto\x12\x12\x61ppsets.openapi.v1\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/rpc/status.proto\"$\n\x0eGetUserRequest\x12\x12\n\x04name\x18\x01 \x01(\tR\x04name\";\n\x0fGetUserResponse\x12(\n\x05\x65rror\x18\x01 \x01(\x0b\x32\x12.google.rpc.StatusR\x05\x65rror\"\x13\n\x11\x43reateUserRequest\"\xb1\x01\n\x12\x43reateUserResponse\x12(\n\x05\x65rror\x18\x01 \x01(\x0b\x32\x12.google.rpc.StatusR\x05\x65rror\x12\x0e\n\x02id\x18\x02 \x01(\tR\x02id\x12\x12\n\x04\x63ode\x18\x03 \x01(\tR\x04\x63ode\x12!\n\x0c\x64isplay_name\x18\x04 \x01(\tR\x0b\x64isplayName\x12\x14\n\x05\x65mail\x18\x05 \x01(\tR\x05\x65mail\x12\x14\n\x05phone\x18\x06 \x01(\tR\x05phone*\x85\x01\n\x08UserRole\x12\x19\n\x15USER_ROLE_UNSPECIFIED\x10\x00\x12\x13\n\x0fUSER_ROLE_ADMIN\x10\x01\x12\x17\n\x13USER_ROLE_DEVELOPER\x10\x02\x12\x18\n\x14USER_ROLE_MAINTAINER\x10\x03\x12\x16\n\x12USER_ROLE_READONLY\x10\x04\x32\xf5\x01\n\x0bUserService\x12l\n\x03Get\x12\".appsets.openapi.v1.GetUserRequest\x1a#.appsets.openapi.v1.GetUserResponse\"\x1c\x82\xd3\xe4\x93\x02\x16\"\x11/api/v1/users/get:\x01*\x12x\n\x06\x43reate\x12%.appsets.openapi.v1.CreateUserRequest\x1a&.appsets.openapi.v1.CreateUserResponse\"\x1f\x82\xd3\xe4\x93\x02\x19\"\x14/api/v1/users/create:\x01*B5Z3github.com/appsets/protocol/go/openapi/v1;openapipbb\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -37,16 +38,16 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_USERSERVICE'].methods_by_name['Get']._serialized_options = b'\202\323\344\223\002\026\"\021/api/v1/users/get:\001*'
   _globals['_USERSERVICE'].methods_by_name['Create']._loaded_options = None
   _globals['_USERSERVICE'].methods_by_name['Create']._serialized_options = b'\202\323\344\223\002\031\"\024/api/v1/users/create:\001*'
-  _globals['_USERROLE']._serialized_start=292
-  _globals['_USERROLE']._serialized_end=421
-  _globals['_GETUSERREQUEST']._serialized_start=75
-  _globals['_GETUSERREQUEST']._serialized_end=111
-  _globals['_GETUSERRESPONSE']._serialized_start=113
-  _globals['_GETUSERRESPONSE']._serialized_end=130
-  _globals['_CREATEUSERREQUEST']._serialized_start=132
-  _globals['_CREATEUSERREQUEST']._serialized_end=151
-  _globals['_CREATEUSERRESPONSE']._serialized_start=154
-  _globals['_CREATEUSERRESPONSE']._serialized_end=289
-  _globals['_USERSERVICE']._serialized_start=424
-  _globals['_USERSERVICE']._serialized_end=669
+  _globals['_USERROLE']._serialized_start=401
+  _globals['_USERROLE']._serialized_end=534
+  _globals['_GETUSERREQUEST']._serialized_start=100
+  _globals['_GETUSERREQUEST']._serialized_end=136
+  _globals['_GETUSERRESPONSE']._serialized_start=138
+  _globals['_GETUSERRESPONSE']._serialized_end=197
+  _globals['_CREATEUSERREQUEST']._serialized_start=199
+  _globals['_CREATEUSERREQUEST']._serialized_end=218
+  _globals['_CREATEUSERRESPONSE']._serialized_start=221
+  _globals['_CREATEUSERRESPONSE']._serialized_end=398
+  _globals['_USERSERVICE']._serialized_start=537
+  _globals['_USERSERVICE']._serialized_end=782
 # @@protoc_insertion_point(module_scope)

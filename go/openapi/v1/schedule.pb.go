@@ -4,10 +4,13 @@
 // 	protoc        (unknown)
 // source: openapi/v1/schedule.proto
 
+// buf:lint:ignore PACKAGE_DIRECTORY_MATCH
+
 package openapipb
 
 import (
 	_ "google.golang.org/genproto/googleapis/api/annotations"
+	status "google.golang.org/genproto/googleapis/rpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -60,6 +63,7 @@ func (*ValidatePurchasesRequest) Descriptor() ([]byte, []int) {
 
 type ValidatePurchasesResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
+	Error         *status.Status         `protobuf:"bytes,1,opt,name=error,proto3" json:"error,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -94,13 +98,21 @@ func (*ValidatePurchasesResponse) Descriptor() ([]byte, []int) {
 	return file_openapi_v1_schedule_proto_rawDescGZIP(), []int{1}
 }
 
+func (x *ValidatePurchasesResponse) GetError() *status.Status {
+	if x != nil {
+		return x.Error
+	}
+	return nil
+}
+
 var File_openapi_v1_schedule_proto protoreflect.FileDescriptor
 
 const file_openapi_v1_schedule_proto_rawDesc = "" +
 	"\n" +
-	"\x19openapi/v1/schedule.proto\x12\x12appsets.openapi.v1\x1a\x1cgoogle/api/annotations.proto\"\x1a\n" +
-	"\x18ValidatePurchasesRequest\"\x1b\n" +
-	"\x19ValidatePurchasesResponse2\xb3\x01\n" +
+	"\x19openapi/v1/schedule.proto\x12\x12appsets.openapi.v1\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/rpc/status.proto\"\x1a\n" +
+	"\x18ValidatePurchasesRequest\"E\n" +
+	"\x19ValidatePurchasesResponse\x12(\n" +
+	"\x05error\x18\x01 \x01(\v2\x12.google.rpc.StatusR\x05error2\xb3\x01\n" +
 	"\x0fScheduleService\x12\x9f\x01\n" +
 	"\x11ValidatePurchases\x12,.appsets.openapi.v1.ValidatePurchasesRequest\x1a-.appsets.openapi.v1.ValidatePurchasesResponse\"-\x82\xd3\xe4\x93\x02':\x01*\"\"/api/v1/schedule/purchase/validateB5Z3github.com/appsets/protocol/go/openapi/v1;openapipbb\x06proto3"
 
@@ -120,15 +132,17 @@ var file_openapi_v1_schedule_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_openapi_v1_schedule_proto_goTypes = []any{
 	(*ValidatePurchasesRequest)(nil),  // 0: appsets.openapi.v1.ValidatePurchasesRequest
 	(*ValidatePurchasesResponse)(nil), // 1: appsets.openapi.v1.ValidatePurchasesResponse
+	(*status.Status)(nil),             // 2: google.rpc.Status
 }
 var file_openapi_v1_schedule_proto_depIdxs = []int32{
-	0, // 0: appsets.openapi.v1.ScheduleService.ValidatePurchases:input_type -> appsets.openapi.v1.ValidatePurchasesRequest
-	1, // 1: appsets.openapi.v1.ScheduleService.ValidatePurchases:output_type -> appsets.openapi.v1.ValidatePurchasesResponse
-	1, // [1:2] is the sub-list for method output_type
-	0, // [0:1] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	2, // 0: appsets.openapi.v1.ValidatePurchasesResponse.error:type_name -> google.rpc.Status
+	0, // 1: appsets.openapi.v1.ScheduleService.ValidatePurchases:input_type -> appsets.openapi.v1.ValidatePurchasesRequest
+	1, // 2: appsets.openapi.v1.ScheduleService.ValidatePurchases:output_type -> appsets.openapi.v1.ValidatePurchasesResponse
+	2, // [2:3] is the sub-list for method output_type
+	1, // [1:2] is the sub-list for method input_type
+	1, // [1:1] is the sub-list for extension type_name
+	1, // [1:1] is the sub-list for extension extendee
+	0, // [0:1] is the sub-list for field type_name
 }
 
 func init() { file_openapi_v1_schedule_proto_init() }

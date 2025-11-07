@@ -2,8 +2,11 @@
 // @generated from file openapi/v1/user.proto (package appsets.openapi.v1, syntax proto3)
 /* eslint-disable */
 
+// buf:lint:ignore PACKAGE_DIRECTORY_MATCH
+
 import type { GenEnum, GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
 import type { Message } from "@bufbuild/protobuf";
+import type { Status } from "../../google/rpc/status_pb";
 
 /**
  * Describes the file openapi/v1/user.proto.
@@ -30,6 +33,10 @@ export declare const GetUserRequestSchema: GenMessage<GetUserRequest>;
  * @generated from message appsets.openapi.v1.GetUserResponse
  */
 export declare type GetUserResponse = Message<"appsets.openapi.v1.GetUserResponse"> & {
+  /**
+   * @generated from field: google.rpc.Status error = 1;
+   */
+  error?: Status;
 };
 
 /**
@@ -55,27 +62,32 @@ export declare const CreateUserRequestSchema: GenMessage<CreateUserRequest>;
  */
 export declare type CreateUserResponse = Message<"appsets.openapi.v1.CreateUserResponse"> & {
   /**
-   * @generated from field: string id = 1;
+   * @generated from field: google.rpc.Status error = 1;
+   */
+  error?: Status;
+
+  /**
+   * @generated from field: string id = 2;
    */
   id: string;
 
   /**
-   * @generated from field: string code = 2;
+   * @generated from field: string code = 3;
    */
   code: string;
 
   /**
-   * @generated from field: string display_name = 3;
+   * @generated from field: string display_name = 4;
    */
   displayName: string;
 
   /**
-   * @generated from field: string email = 4;
+   * @generated from field: string email = 5;
    */
   email: string;
 
   /**
-   * @generated from field: string phone = 5;
+   * @generated from field: string phone = 6;
    */
   phone: string;
 };
@@ -91,9 +103,9 @@ export declare const CreateUserResponseSchema: GenMessage<CreateUserResponse>;
  */
 export enum UserRole {
   /**
-   * @generated from enum value: USER_ROLE_UNKNOWN = 0;
+   * @generated from enum value: USER_ROLE_UNSPECIFIED = 0;
    */
-  UNKNOWN = 0,
+  UNSPECIFIED = 0,
 
   /**
    * All access

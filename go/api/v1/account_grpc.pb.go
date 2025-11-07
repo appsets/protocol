@@ -4,6 +4,8 @@
 // - protoc             (unknown)
 // source: api/v1/account.proto
 
+// buf:lint:ignore PACKAGE_DIRECTORY_MATCH
+
 package apipb
 
 import (
@@ -27,8 +29,12 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type AccountServiceClient interface {
-	AuthenticateEmail(ctx context.Context, in *AuthenticateEmailRequest, opts ...grpc.CallOption) (*Session, error)
-	RefreshToken(ctx context.Context, in *RefreshTokenRequest, opts ...grpc.CallOption) (*Session, error)
+	// buf:lint:ignore RPC_REQUEST_RESPONSE_UNIQUE
+	// buf:lint:ignore RPC_RESPONSE_STANDARD_NAME
+	AuthenticateEmail(ctx context.Context, in *AuthenticateEmailRequest, opts ...grpc.CallOption) (*SessionResponse, error)
+	// buf:lint:ignore RPC_REQUEST_RESPONSE_UNIQUE
+	// buf:lint:ignore RPC_RESPONSE_STANDARD_NAME
+	RefreshToken(ctx context.Context, in *RefreshTokenRequest, opts ...grpc.CallOption) (*SessionResponse, error)
 }
 
 type accountServiceClient struct {
@@ -39,9 +45,9 @@ func NewAccountServiceClient(cc grpc.ClientConnInterface) AccountServiceClient {
 	return &accountServiceClient{cc}
 }
 
-func (c *accountServiceClient) AuthenticateEmail(ctx context.Context, in *AuthenticateEmailRequest, opts ...grpc.CallOption) (*Session, error) {
+func (c *accountServiceClient) AuthenticateEmail(ctx context.Context, in *AuthenticateEmailRequest, opts ...grpc.CallOption) (*SessionResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(Session)
+	out := new(SessionResponse)
 	err := c.cc.Invoke(ctx, AccountService_AuthenticateEmail_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -49,9 +55,9 @@ func (c *accountServiceClient) AuthenticateEmail(ctx context.Context, in *Authen
 	return out, nil
 }
 
-func (c *accountServiceClient) RefreshToken(ctx context.Context, in *RefreshTokenRequest, opts ...grpc.CallOption) (*Session, error) {
+func (c *accountServiceClient) RefreshToken(ctx context.Context, in *RefreshTokenRequest, opts ...grpc.CallOption) (*SessionResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(Session)
+	out := new(SessionResponse)
 	err := c.cc.Invoke(ctx, AccountService_RefreshToken_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -63,8 +69,12 @@ func (c *accountServiceClient) RefreshToken(ctx context.Context, in *RefreshToke
 // All implementations must embed UnimplementedAccountServiceServer
 // for forward compatibility.
 type AccountServiceServer interface {
-	AuthenticateEmail(context.Context, *AuthenticateEmailRequest) (*Session, error)
-	RefreshToken(context.Context, *RefreshTokenRequest) (*Session, error)
+	// buf:lint:ignore RPC_REQUEST_RESPONSE_UNIQUE
+	// buf:lint:ignore RPC_RESPONSE_STANDARD_NAME
+	AuthenticateEmail(context.Context, *AuthenticateEmailRequest) (*SessionResponse, error)
+	// buf:lint:ignore RPC_REQUEST_RESPONSE_UNIQUE
+	// buf:lint:ignore RPC_RESPONSE_STANDARD_NAME
+	RefreshToken(context.Context, *RefreshTokenRequest) (*SessionResponse, error)
 	mustEmbedUnimplementedAccountServiceServer()
 }
 
@@ -75,10 +85,10 @@ type AccountServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedAccountServiceServer struct{}
 
-func (UnimplementedAccountServiceServer) AuthenticateEmail(context.Context, *AuthenticateEmailRequest) (*Session, error) {
+func (UnimplementedAccountServiceServer) AuthenticateEmail(context.Context, *AuthenticateEmailRequest) (*SessionResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AuthenticateEmail not implemented")
 }
-func (UnimplementedAccountServiceServer) RefreshToken(context.Context, *RefreshTokenRequest) (*Session, error) {
+func (UnimplementedAccountServiceServer) RefreshToken(context.Context, *RefreshTokenRequest) (*SessionResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RefreshToken not implemented")
 }
 func (UnimplementedAccountServiceServer) mustEmbedUnimplementedAccountServiceServer() {}

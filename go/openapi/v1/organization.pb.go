@@ -4,10 +4,13 @@
 // 	protoc        (unknown)
 // source: openapi/v1/organization.proto
 
+// buf:lint:ignore PACKAGE_DIRECTORY_MATCH
+
 package openapipb
 
 import (
 	_ "google.golang.org/genproto/googleapis/api/annotations"
+	status "google.golang.org/genproto/googleapis/rpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -100,6 +103,7 @@ func (x *CreateOrganizationRequest) GetCreatedBy() string {
 
 type CreateOrganizationResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
+	Error         *status.Status         `protobuf:"bytes,1,opt,name=error,proto3" json:"error,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -134,19 +138,27 @@ func (*CreateOrganizationResponse) Descriptor() ([]byte, []int) {
 	return file_openapi_v1_organization_proto_rawDescGZIP(), []int{1}
 }
 
+func (x *CreateOrganizationResponse) GetError() *status.Status {
+	if x != nil {
+		return x.Error
+	}
+	return nil
+}
+
 var File_openapi_v1_organization_proto protoreflect.FileDescriptor
 
 const file_openapi_v1_organization_proto_rawDesc = "" +
 	"\n" +
-	"\x1dopenapi/v1/organization.proto\x12\x12appsets.openapi.v1\x1a\x1cgoogle/api/annotations.proto\"\x8d\x01\n" +
+	"\x1dopenapi/v1/organization.proto\x12\x12appsets.openapi.v1\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/rpc/status.proto\"\x8d\x01\n" +
 	"\x19CreateOrganizationRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04code\x18\x02 \x01(\tR\x04code\x12\x12\n" +
 	"\x04name\x18\x03 \x01(\tR\x04name\x12\x19\n" +
 	"\bowned_by\x18\x04 \x01(\tR\aownedBy\x12\x1d\n" +
 	"\n" +
-	"created_by\x18\x05 \x01(\tR\tcreatedBy\"\x1c\n" +
-	"\x1aCreateOrganizationResponse2\xb3\x01\n" +
+	"created_by\x18\x05 \x01(\tR\tcreatedBy\"F\n" +
+	"\x1aCreateOrganizationResponse\x12(\n" +
+	"\x05error\x18\x01 \x01(\v2\x12.google.rpc.StatusR\x05error2\xb3\x01\n" +
 	"\x13OrganizationService\x12\x9b\x01\n" +
 	"\x12CreateOrganization\x12-.appsets.openapi.v1.CreateOrganizationRequest\x1a..appsets.openapi.v1.CreateOrganizationResponse\"&\x82\xd3\xe4\x93\x02 :\x01*\"\x1b/api/v1/organization/createB5Z3github.com/appsets/protocol/go/openapi/v1;openapipbb\x06proto3"
 
@@ -166,15 +178,17 @@ var file_openapi_v1_organization_proto_msgTypes = make([]protoimpl.MessageInfo, 
 var file_openapi_v1_organization_proto_goTypes = []any{
 	(*CreateOrganizationRequest)(nil),  // 0: appsets.openapi.v1.CreateOrganizationRequest
 	(*CreateOrganizationResponse)(nil), // 1: appsets.openapi.v1.CreateOrganizationResponse
+	(*status.Status)(nil),              // 2: google.rpc.Status
 }
 var file_openapi_v1_organization_proto_depIdxs = []int32{
-	0, // 0: appsets.openapi.v1.OrganizationService.CreateOrganization:input_type -> appsets.openapi.v1.CreateOrganizationRequest
-	1, // 1: appsets.openapi.v1.OrganizationService.CreateOrganization:output_type -> appsets.openapi.v1.CreateOrganizationResponse
-	1, // [1:2] is the sub-list for method output_type
-	0, // [0:1] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	2, // 0: appsets.openapi.v1.CreateOrganizationResponse.error:type_name -> google.rpc.Status
+	0, // 1: appsets.openapi.v1.OrganizationService.CreateOrganization:input_type -> appsets.openapi.v1.CreateOrganizationRequest
+	1, // 2: appsets.openapi.v1.OrganizationService.CreateOrganization:output_type -> appsets.openapi.v1.CreateOrganizationResponse
+	2, // [2:3] is the sub-list for method output_type
+	1, // [1:2] is the sub-list for method input_type
+	1, // [1:1] is the sub-list for extension type_name
+	1, // [1:1] is the sub-list for extension extendee
+	0, // [0:1] is the sub-list for field type_name
 }
 
 func init() { file_openapi_v1_organization_proto_init() }

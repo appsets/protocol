@@ -2,8 +2,11 @@
 // @generated from file api/v1/purchase.proto (package appsets.api.v1, syntax proto3)
 /* eslint-disable */
 
+// buf:lint:ignore PACKAGE_DIRECTORY_MATCH
+
 import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
 import type { Message } from "@bufbuild/protobuf";
+import type { Status } from "../../google/rpc/status_pb";
 
 /**
  * Describes the file api/v1/purchase.proto.
@@ -71,17 +74,22 @@ export declare const InitializePurchaseAlipayRequestSchema: GenMessage<Initializ
  */
 export declare type InitializePurchaseAlipayResponse = Message<"appsets.api.v1.InitializePurchaseAlipayResponse"> & {
   /**
-   * @generated from field: string transaction_id = 1;
+   * @generated from field: google.rpc.Status error = 1;
+   */
+  error?: Status;
+
+  /**
+   * @generated from field: string transaction_id = 2;
    */
   transactionId: string;
 
   /**
-   * @generated from field: string payload = 2;
+   * @generated from field: string payload = 3;
    */
   payload: string;
 
   /**
-   * @generated from field: int64 expired_at = 3;
+   * @generated from field: int64 expired_at = 4;
    */
   expiredAt: bigint;
 };
@@ -108,6 +116,10 @@ export declare const ValidatePurchaseAlipayRequestSchema: GenMessage<ValidatePur
  * @generated from message appsets.api.v1.ValidatePurchaseAlipayResponse
  */
 export declare type ValidatePurchaseAlipayResponse = Message<"appsets.api.v1.ValidatePurchaseAlipayResponse"> & {
+  /**
+   * @generated from field: google.rpc.Status error = 1;
+   */
+  error?: Status;
 };
 
 /**
@@ -136,6 +148,10 @@ export declare const CancelPurchaseRequestSchema: GenMessage<CancelPurchaseReque
  * @generated from message appsets.api.v1.CancelPurchaseResponse
  */
 export declare type CancelPurchaseResponse = Message<"appsets.api.v1.CancelPurchaseResponse"> & {
+  /**
+   * @generated from field: google.rpc.Status error = 1;
+   */
+  error?: Status;
 };
 
 /**

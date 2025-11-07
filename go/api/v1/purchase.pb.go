@@ -4,10 +4,13 @@
 // 	protoc        (unknown)
 // source: api/v1/purchase.proto
 
+// buf:lint:ignore PACKAGE_DIRECTORY_MATCH
+
 package apipb
 
 import (
 	_ "google.golang.org/genproto/googleapis/api/annotations"
+	status "google.golang.org/genproto/googleapis/rpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -132,9 +135,10 @@ func (x *InitializePurchaseAlipayRequest) GetMetadata() map[string]string {
 
 type InitializePurchaseAlipayResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	TransactionId string                 `protobuf:"bytes,1,opt,name=transaction_id,json=transactionId,proto3" json:"transaction_id,omitempty"`
-	Payload       string                 `protobuf:"bytes,2,opt,name=payload,proto3" json:"payload,omitempty"`
-	ExpiredAt     int64                  `protobuf:"varint,3,opt,name=expired_at,json=expiredAt,proto3" json:"expired_at,omitempty"`
+	Error         *status.Status         `protobuf:"bytes,1,opt,name=error,proto3" json:"error,omitempty"`
+	TransactionId string                 `protobuf:"bytes,2,opt,name=transaction_id,json=transactionId,proto3" json:"transaction_id,omitempty"`
+	Payload       string                 `protobuf:"bytes,3,opt,name=payload,proto3" json:"payload,omitempty"`
+	ExpiredAt     int64                  `protobuf:"varint,4,opt,name=expired_at,json=expiredAt,proto3" json:"expired_at,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -167,6 +171,13 @@ func (x *InitializePurchaseAlipayResponse) ProtoReflect() protoreflect.Message {
 // Deprecated: Use InitializePurchaseAlipayResponse.ProtoReflect.Descriptor instead.
 func (*InitializePurchaseAlipayResponse) Descriptor() ([]byte, []int) {
 	return file_api_v1_purchase_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *InitializePurchaseAlipayResponse) GetError() *status.Status {
+	if x != nil {
+		return x.Error
+	}
+	return nil
 }
 
 func (x *InitializePurchaseAlipayResponse) GetTransactionId() string {
@@ -228,6 +239,7 @@ func (*ValidatePurchaseAlipayRequest) Descriptor() ([]byte, []int) {
 
 type ValidatePurchaseAlipayResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
+	Error         *status.Status         `protobuf:"bytes,1,opt,name=error,proto3" json:"error,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -260,6 +272,13 @@ func (x *ValidatePurchaseAlipayResponse) ProtoReflect() protoreflect.Message {
 // Deprecated: Use ValidatePurchaseAlipayResponse.ProtoReflect.Descriptor instead.
 func (*ValidatePurchaseAlipayResponse) Descriptor() ([]byte, []int) {
 	return file_api_v1_purchase_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *ValidatePurchaseAlipayResponse) GetError() *status.Status {
+	if x != nil {
+		return x.Error
+	}
+	return nil
 }
 
 type CancelPurchaseRequest struct {
@@ -308,6 +327,7 @@ func (x *CancelPurchaseRequest) GetTransactionId() string {
 
 type CancelPurchaseResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
+	Error         *status.Status         `protobuf:"bytes,1,opt,name=error,proto3" json:"error,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -342,11 +362,18 @@ func (*CancelPurchaseResponse) Descriptor() ([]byte, []int) {
 	return file_api_v1_purchase_proto_rawDescGZIP(), []int{5}
 }
 
+func (x *CancelPurchaseResponse) GetError() *status.Status {
+	if x != nil {
+		return x.Error
+	}
+	return nil
+}
+
 var File_api_v1_purchase_proto protoreflect.FileDescriptor
 
 const file_api_v1_purchase_proto_rawDesc = "" +
 	"\n" +
-	"\x15api/v1/purchase.proto\x12\x0eappsets.api.v1\x1a\x1cgoogle/api/annotations.proto\"\xb7\x03\n" +
+	"\x15api/v1/purchase.proto\x12\x0eappsets.api.v1\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/rpc/status.proto\"\xb7\x03\n" +
 	"\x1fInitializePurchaseAlipayRequest\x12!\n" +
 	"\fproduct_type\x18\x01 \x01(\tR\vproductType\x12\x1d\n" +
 	"\n" +
@@ -360,17 +387,20 @@ const file_api_v1_purchase_proto_rawDesc = "" +
 	"\bmetadata\x18\t \x03(\v2=.appsets.api.v1.InitializePurchaseAlipayRequest.MetadataEntryR\bmetadata\x1a;\n" +
 	"\rMetadataEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\x82\x01\n" +
-	" InitializePurchaseAlipayResponse\x12%\n" +
-	"\x0etransaction_id\x18\x01 \x01(\tR\rtransactionId\x12\x18\n" +
-	"\apayload\x18\x02 \x01(\tR\apayload\x12\x1d\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xac\x01\n" +
+	" InitializePurchaseAlipayResponse\x12(\n" +
+	"\x05error\x18\x01 \x01(\v2\x12.google.rpc.StatusR\x05error\x12%\n" +
+	"\x0etransaction_id\x18\x02 \x01(\tR\rtransactionId\x12\x18\n" +
+	"\apayload\x18\x03 \x01(\tR\apayload\x12\x1d\n" +
 	"\n" +
-	"expired_at\x18\x03 \x01(\x03R\texpiredAt\"\x1f\n" +
-	"\x1dValidatePurchaseAlipayRequest\" \n" +
-	"\x1eValidatePurchaseAlipayResponse\">\n" +
+	"expired_at\x18\x04 \x01(\x03R\texpiredAt\"\x1f\n" +
+	"\x1dValidatePurchaseAlipayRequest\"J\n" +
+	"\x1eValidatePurchaseAlipayResponse\x12(\n" +
+	"\x05error\x18\x01 \x01(\v2\x12.google.rpc.StatusR\x05error\">\n" +
 	"\x15CancelPurchaseRequest\x12%\n" +
-	"\x0etransaction_id\x18\x01 \x01(\tR\rtransactionId\"\x18\n" +
-	"\x16CancelPurchaseResponse2\xed\x03\n" +
+	"\x0etransaction_id\x18\x01 \x01(\tR\rtransactionId\"B\n" +
+	"\x16CancelPurchaseResponse\x12(\n" +
+	"\x05error\x18\x01 \x01(\v2\x12.google.rpc.StatusR\x05error2\xed\x03\n" +
 	"\x0fPurchaseService\x12\xac\x01\n" +
 	"\x18InitializePurchaseAlipay\x12/.appsets.api.v1.InitializePurchaseAlipayRequest\x1a0.appsets.api.v1.InitializePurchaseAlipayResponse\"-\x82\xd3\xe4\x93\x02':\x01*\"\"/api/v1/purchase/alipay/initialize\x12\xa4\x01\n" +
 	"\x16ValidatePurchaseAlipay\x12-.appsets.api.v1.ValidatePurchaseAlipayRequest\x1a..appsets.api.v1.ValidatePurchaseAlipayResponse\"+\x82\xd3\xe4\x93\x02%:\x01*\" /api/v1/purchase/alipay/validate\x12\x83\x01\n" +
@@ -397,20 +427,24 @@ var file_api_v1_purchase_proto_goTypes = []any{
 	(*CancelPurchaseRequest)(nil),            // 4: appsets.api.v1.CancelPurchaseRequest
 	(*CancelPurchaseResponse)(nil),           // 5: appsets.api.v1.CancelPurchaseResponse
 	nil,                                      // 6: appsets.api.v1.InitializePurchaseAlipayRequest.MetadataEntry
+	(*status.Status)(nil),                    // 7: google.rpc.Status
 }
 var file_api_v1_purchase_proto_depIdxs = []int32{
 	6, // 0: appsets.api.v1.InitializePurchaseAlipayRequest.metadata:type_name -> appsets.api.v1.InitializePurchaseAlipayRequest.MetadataEntry
-	0, // 1: appsets.api.v1.PurchaseService.InitializePurchaseAlipay:input_type -> appsets.api.v1.InitializePurchaseAlipayRequest
-	2, // 2: appsets.api.v1.PurchaseService.ValidatePurchaseAlipay:input_type -> appsets.api.v1.ValidatePurchaseAlipayRequest
-	4, // 3: appsets.api.v1.PurchaseService.CancelPurchase:input_type -> appsets.api.v1.CancelPurchaseRequest
-	1, // 4: appsets.api.v1.PurchaseService.InitializePurchaseAlipay:output_type -> appsets.api.v1.InitializePurchaseAlipayResponse
-	3, // 5: appsets.api.v1.PurchaseService.ValidatePurchaseAlipay:output_type -> appsets.api.v1.ValidatePurchaseAlipayResponse
-	5, // 6: appsets.api.v1.PurchaseService.CancelPurchase:output_type -> appsets.api.v1.CancelPurchaseResponse
-	4, // [4:7] is the sub-list for method output_type
-	1, // [1:4] is the sub-list for method input_type
-	1, // [1:1] is the sub-list for extension type_name
-	1, // [1:1] is the sub-list for extension extendee
-	0, // [0:1] is the sub-list for field type_name
+	7, // 1: appsets.api.v1.InitializePurchaseAlipayResponse.error:type_name -> google.rpc.Status
+	7, // 2: appsets.api.v1.ValidatePurchaseAlipayResponse.error:type_name -> google.rpc.Status
+	7, // 3: appsets.api.v1.CancelPurchaseResponse.error:type_name -> google.rpc.Status
+	0, // 4: appsets.api.v1.PurchaseService.InitializePurchaseAlipay:input_type -> appsets.api.v1.InitializePurchaseAlipayRequest
+	2, // 5: appsets.api.v1.PurchaseService.ValidatePurchaseAlipay:input_type -> appsets.api.v1.ValidatePurchaseAlipayRequest
+	4, // 6: appsets.api.v1.PurchaseService.CancelPurchase:input_type -> appsets.api.v1.CancelPurchaseRequest
+	1, // 7: appsets.api.v1.PurchaseService.InitializePurchaseAlipay:output_type -> appsets.api.v1.InitializePurchaseAlipayResponse
+	3, // 8: appsets.api.v1.PurchaseService.ValidatePurchaseAlipay:output_type -> appsets.api.v1.ValidatePurchaseAlipayResponse
+	5, // 9: appsets.api.v1.PurchaseService.CancelPurchase:output_type -> appsets.api.v1.CancelPurchaseResponse
+	7, // [7:10] is the sub-list for method output_type
+	4, // [4:7] is the sub-list for method input_type
+	4, // [4:4] is the sub-list for extension type_name
+	4, // [4:4] is the sub-list for extension extendee
+	0, // [0:4] is the sub-list for field type_name
 }
 
 func init() { file_api_v1_purchase_proto_init() }
