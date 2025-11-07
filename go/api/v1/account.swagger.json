@@ -24,7 +24,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/v1SessionResponse"
+              "$ref": "#/definitions/v1TokenResponse"
             }
           },
           "default": {
@@ -57,7 +57,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/v1SessionResponse"
+              "$ref": "#/definitions/v1TokenResponse"
             }
           },
           "default": {
@@ -157,7 +157,7 @@
         }
       }
     },
-    "v1SessionResponse": {
+    "v1TokenResponse": {
       "type": "object",
       "properties": {
         "error": {

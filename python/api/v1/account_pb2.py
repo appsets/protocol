@@ -27,7 +27,7 @@ from google.protobuf import wrappers_pb2 as google_dot_protobuf_dot_wrappers__pb
 from google.rpc import status_pb2 as google_dot_rpc_dot_status__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x14\x61pi/v1/account.proto\x12\x0e\x61ppsets.api.v1\x1a\x1cgoogle/api/annotations.proto\x1a\x1egoogle/protobuf/wrappers.proto\x1a\x17google/rpc/status.proto\"\xb5\x01\n\x0c\x41\x63\x63ountEmail\x12\x14\n\x05\x65mail\x18\x01 \x01(\tR\x05\x65mail\x12\x1a\n\x08password\x18\x02 \x01(\tR\x08password\x12:\n\x04vars\x18\x03 \x03(\x0b\x32&.appsets.api.v1.AccountEmail.VarsEntryR\x04vars\x1a\x37\n\tVarsEntry\x12\x10\n\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n\x05value\x18\x02 \x01(\tR\x05value:\x02\x38\x01\"\xa2\x01\n\x18\x41uthenticateEmailRequest\x12\x36\n\x07\x61\x63\x63ount\x18\x01 \x01(\x0b\x32\x1c.appsets.api.v1.AccountEmailR\x07\x61\x63\x63ount\x12\x32\n\x06\x63reate\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.BoolValueR\x06\x63reate\x12\x1a\n\x08username\x18\x03 \x01(\tR\x08username\"\xc7\x01\n\x0fSessionResponse\x12(\n\x05\x65rror\x18\x01 \x01(\x0b\x32\x12.google.rpc.StatusR\x05\x65rror\x12\x18\n\x07\x63reated\x18\x02 \x01(\x08R\x07\x63reated\x12\x14\n\x05token\x18\x03 \x01(\tR\x05token\x12#\n\rrefresh_token\x18\x04 \x01(\tR\x0crefreshToken\x12\x35\n\tuser_info\x18\x05 \x01(\x0b\x32\x18.appsets.api.v1.UserInfoR\x08userInfo\"\xa4\x01\n\x08UserInfo\x12\x0e\n\x02id\x18\x01 \x01(\x03R\x02id\x12\x1a\n\x08username\x18\x02 \x01(\tR\x08username\x12!\n\x0c\x64isplay_name\x18\x03 \x01(\tR\x0b\x64isplayName\x12\x1d\n\navatar_url\x18\x04 \x01(\tR\tavatarUrl\x12\x14\n\x05\x65mail\x18\x05 \x01(\tR\x05\x65mail\x12\x14\n\x05phone\x18\x06 \x01(\tR\x05phone\"+\n\x13RefreshTokenRequest\x12\x14\n\x05token\x18\x01 \x01(\tR\x05token2\x9e\x02\n\x0e\x41\x63\x63ountService\x12\x85\x01\n\x11\x41uthenticateEmail\x12(.appsets.api.v1.AuthenticateEmailRequest\x1a\x1f.appsets.api.v1.SessionResponse\"%\x82\xd3\xe4\x93\x02\x1f\"\x1a/api/v1/authenticate/email:\x01*\x12\x83\x01\n\x0cRefreshToken\x12#.appsets.api.v1.RefreshTokenRequest\x1a\x1f.appsets.api.v1.SessionResponse\"-\x82\xd3\xe4\x93\x02\'\"\"/api/v1/authenticate/token/refresh:\x01*B-Z+github.com/appsets/protocol/go/api/v1;apipbb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x14\x61pi/v1/account.proto\x12\x0e\x61ppsets.api.v1\x1a\x1cgoogle/api/annotations.proto\x1a\x1egoogle/protobuf/wrappers.proto\x1a\x17google/rpc/status.proto\"\xb5\x01\n\x0c\x41\x63\x63ountEmail\x12\x14\n\x05\x65mail\x18\x01 \x01(\tR\x05\x65mail\x12\x1a\n\x08password\x18\x02 \x01(\tR\x08password\x12:\n\x04vars\x18\x03 \x03(\x0b\x32&.appsets.api.v1.AccountEmail.VarsEntryR\x04vars\x1a\x37\n\tVarsEntry\x12\x10\n\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n\x05value\x18\x02 \x01(\tR\x05value:\x02\x38\x01\"\xa2\x01\n\x18\x41uthenticateEmailRequest\x12\x36\n\x07\x61\x63\x63ount\x18\x01 \x01(\x0b\x32\x1c.appsets.api.v1.AccountEmailR\x07\x61\x63\x63ount\x12\x32\n\x06\x63reate\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.BoolValueR\x06\x63reate\x12\x1a\n\x08username\x18\x03 \x01(\tR\x08username\"\xc5\x01\n\rTokenResponse\x12(\n\x05\x65rror\x18\x01 \x01(\x0b\x32\x12.google.rpc.StatusR\x05\x65rror\x12\x18\n\x07\x63reated\x18\x02 \x01(\x08R\x07\x63reated\x12\x14\n\x05token\x18\x03 \x01(\tR\x05token\x12#\n\rrefresh_token\x18\x04 \x01(\tR\x0crefreshToken\x12\x35\n\tuser_info\x18\x05 \x01(\x0b\x32\x18.appsets.api.v1.UserInfoR\x08userInfo\"\xa4\x01\n\x08UserInfo\x12\x0e\n\x02id\x18\x01 \x01(\x03R\x02id\x12\x1a\n\x08username\x18\x02 \x01(\tR\x08username\x12!\n\x0c\x64isplay_name\x18\x03 \x01(\tR\x0b\x64isplayName\x12\x1d\n\navatar_url\x18\x04 \x01(\tR\tavatarUrl\x12\x14\n\x05\x65mail\x18\x05 \x01(\tR\x05\x65mail\x12\x14\n\x05phone\x18\x06 \x01(\tR\x05phone\"+\n\x13RefreshTokenRequest\x12\x14\n\x05token\x18\x01 \x01(\tR\x05token2\x9a\x02\n\x0e\x41\x63\x63ountService\x12\x83\x01\n\x11\x41uthenticateEmail\x12(.appsets.api.v1.AuthenticateEmailRequest\x1a\x1d.appsets.api.v1.TokenResponse\"%\x82\xd3\xe4\x93\x02\x1f\"\x1a/api/v1/authenticate/email:\x01*\x12\x81\x01\n\x0cRefreshToken\x12#.appsets.api.v1.RefreshTokenRequest\x1a\x1d.appsets.api.v1.TokenResponse\"-\x82\xd3\xe4\x93\x02\'\"\"/api/v1/authenticate/token/refresh:\x01*B-Z+github.com/appsets/protocol/go/api/v1;apipbb\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -47,12 +47,12 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_ACCOUNTEMAIL_VARSENTRY']._serialized_end=309
   _globals['_AUTHENTICATEEMAILREQUEST']._serialized_start=312
   _globals['_AUTHENTICATEEMAILREQUEST']._serialized_end=474
-  _globals['_SESSIONRESPONSE']._serialized_start=477
-  _globals['_SESSIONRESPONSE']._serialized_end=676
-  _globals['_USERINFO']._serialized_start=679
-  _globals['_USERINFO']._serialized_end=843
-  _globals['_REFRESHTOKENREQUEST']._serialized_start=845
-  _globals['_REFRESHTOKENREQUEST']._serialized_end=888
-  _globals['_ACCOUNTSERVICE']._serialized_start=891
-  _globals['_ACCOUNTSERVICE']._serialized_end=1177
+  _globals['_TOKENRESPONSE']._serialized_start=477
+  _globals['_TOKENRESPONSE']._serialized_end=674
+  _globals['_USERINFO']._serialized_start=677
+  _globals['_USERINFO']._serialized_end=841
+  _globals['_REFRESHTOKENREQUEST']._serialized_start=843
+  _globals['_REFRESHTOKENREQUEST']._serialized_end=886
+  _globals['_ACCOUNTSERVICE']._serialized_start=889
+  _globals['_ACCOUNTSERVICE']._serialized_end=1171
 # @@protoc_insertion_point(module_scope)

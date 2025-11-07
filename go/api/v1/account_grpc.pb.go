@@ -31,10 +31,10 @@ const (
 type AccountServiceClient interface {
 	// buf:lint:ignore RPC_REQUEST_RESPONSE_UNIQUE
 	// buf:lint:ignore RPC_RESPONSE_STANDARD_NAME
-	AuthenticateEmail(ctx context.Context, in *AuthenticateEmailRequest, opts ...grpc.CallOption) (*SessionResponse, error)
+	AuthenticateEmail(ctx context.Context, in *AuthenticateEmailRequest, opts ...grpc.CallOption) (*TokenResponse, error)
 	// buf:lint:ignore RPC_REQUEST_RESPONSE_UNIQUE
 	// buf:lint:ignore RPC_RESPONSE_STANDARD_NAME
-	RefreshToken(ctx context.Context, in *RefreshTokenRequest, opts ...grpc.CallOption) (*SessionResponse, error)
+	RefreshToken(ctx context.Context, in *RefreshTokenRequest, opts ...grpc.CallOption) (*TokenResponse, error)
 }
 
 type accountServiceClient struct {
@@ -45,9 +45,9 @@ func NewAccountServiceClient(cc grpc.ClientConnInterface) AccountServiceClient {
 	return &accountServiceClient{cc}
 }
 
-func (c *accountServiceClient) AuthenticateEmail(ctx context.Context, in *AuthenticateEmailRequest, opts ...grpc.CallOption) (*SessionResponse, error) {
+func (c *accountServiceClient) AuthenticateEmail(ctx context.Context, in *AuthenticateEmailRequest, opts ...grpc.CallOption) (*TokenResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(SessionResponse)
+	out := new(TokenResponse)
 	err := c.cc.Invoke(ctx, AccountService_AuthenticateEmail_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -55,9 +55,9 @@ func (c *accountServiceClient) AuthenticateEmail(ctx context.Context, in *Authen
 	return out, nil
 }
 
-func (c *accountServiceClient) RefreshToken(ctx context.Context, in *RefreshTokenRequest, opts ...grpc.CallOption) (*SessionResponse, error) {
+func (c *accountServiceClient) RefreshToken(ctx context.Context, in *RefreshTokenRequest, opts ...grpc.CallOption) (*TokenResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(SessionResponse)
+	out := new(TokenResponse)
 	err := c.cc.Invoke(ctx, AccountService_RefreshToken_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -71,10 +71,10 @@ func (c *accountServiceClient) RefreshToken(ctx context.Context, in *RefreshToke
 type AccountServiceServer interface {
 	// buf:lint:ignore RPC_REQUEST_RESPONSE_UNIQUE
 	// buf:lint:ignore RPC_RESPONSE_STANDARD_NAME
-	AuthenticateEmail(context.Context, *AuthenticateEmailRequest) (*SessionResponse, error)
+	AuthenticateEmail(context.Context, *AuthenticateEmailRequest) (*TokenResponse, error)
 	// buf:lint:ignore RPC_REQUEST_RESPONSE_UNIQUE
 	// buf:lint:ignore RPC_RESPONSE_STANDARD_NAME
-	RefreshToken(context.Context, *RefreshTokenRequest) (*SessionResponse, error)
+	RefreshToken(context.Context, *RefreshTokenRequest) (*TokenResponse, error)
 	mustEmbedUnimplementedAccountServiceServer()
 }
 
@@ -85,10 +85,10 @@ type AccountServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedAccountServiceServer struct{}
 
-func (UnimplementedAccountServiceServer) AuthenticateEmail(context.Context, *AuthenticateEmailRequest) (*SessionResponse, error) {
+func (UnimplementedAccountServiceServer) AuthenticateEmail(context.Context, *AuthenticateEmailRequest) (*TokenResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AuthenticateEmail not implemented")
 }
-func (UnimplementedAccountServiceServer) RefreshToken(context.Context, *RefreshTokenRequest) (*SessionResponse, error) {
+func (UnimplementedAccountServiceServer) RefreshToken(context.Context, *RefreshTokenRequest) (*TokenResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RefreshToken not implemented")
 }
 func (UnimplementedAccountServiceServer) mustEmbedUnimplementedAccountServiceServer() {}

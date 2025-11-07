@@ -23,10 +23,10 @@ import (
 type AccountServiceHTTPService interface {
 	// buf:lint:ignore RPC_REQUEST_RESPONSE_UNIQUE
 	// buf:lint:ignore RPC_RESPONSE_STANDARD_NAME
-	AuthenticateEmail(context.Context, *AuthenticateEmailRequest) (*SessionResponse, error)
+	AuthenticateEmail(context.Context, *AuthenticateEmailRequest) (*TokenResponse, error)
 	// buf:lint:ignore RPC_REQUEST_RESPONSE_UNIQUE
 	// buf:lint:ignore RPC_RESPONSE_STANDARD_NAME
-	RefreshToken(context.Context, *RefreshTokenRequest) (*SessionResponse, error)
+	RefreshToken(context.Context, *RefreshTokenRequest) (*TokenResponse, error)
 }
 
 // AccountServiceHTTPConverter has a function to convert AccountServiceHTTPService interface to http.HandlerFunc.
@@ -148,9 +148,9 @@ func (h *AccountServiceHTTPConverter) AuthenticateEmail(onError func(ctx context
 			return
 		}
 
-		ret, ok := iret.(*SessionResponse)
+		ret, ok := iret.(*TokenResponse)
 		if !ok {
-			onError(ctx, w, r, arg, nil, fmt.Errorf("/appsets.api.v1.AccountService/AuthenticateEmail: interceptors have not return SessionResponse"))
+			onError(ctx, w, r, arg, nil, fmt.Errorf("/appsets.api.v1.AccountService/AuthenticateEmail: interceptors have not return TokenResponse"))
 			return
 		}
 
@@ -301,9 +301,9 @@ func (h *AccountServiceHTTPConverter) AuthenticateEmailHTTPRule(onError func(ctx
 			return
 		}
 
-		ret, ok := iret.(*SessionResponse)
+		ret, ok := iret.(*TokenResponse)
 		if !ok {
-			onError(ctx, w, r, arg, nil, fmt.Errorf("/appsets.api.v1.AccountService/AuthenticateEmail: interceptors have not return SessionResponse"))
+			onError(ctx, w, r, arg, nil, fmt.Errorf("/appsets.api.v1.AccountService/AuthenticateEmail: interceptors have not return TokenResponse"))
 			return
 		}
 
@@ -446,9 +446,9 @@ func (h *AccountServiceHTTPConverter) RefreshToken(onError func(ctx context.Cont
 			return
 		}
 
-		ret, ok := iret.(*SessionResponse)
+		ret, ok := iret.(*TokenResponse)
 		if !ok {
-			onError(ctx, w, r, arg, nil, fmt.Errorf("/appsets.api.v1.AccountService/RefreshToken: interceptors have not return SessionResponse"))
+			onError(ctx, w, r, arg, nil, fmt.Errorf("/appsets.api.v1.AccountService/RefreshToken: interceptors have not return TokenResponse"))
 			return
 		}
 
@@ -599,9 +599,9 @@ func (h *AccountServiceHTTPConverter) RefreshTokenHTTPRule(onError func(ctx cont
 			return
 		}
 
-		ret, ok := iret.(*SessionResponse)
+		ret, ok := iret.(*TokenResponse)
 		if !ok {
-			onError(ctx, w, r, arg, nil, fmt.Errorf("/appsets.api.v1.AccountService/RefreshToken: interceptors have not return SessionResponse"))
+			onError(ctx, w, r, arg, nil, fmt.Errorf("/appsets.api.v1.AccountService/RefreshToken: interceptors have not return TokenResponse"))
 			return
 		}
 

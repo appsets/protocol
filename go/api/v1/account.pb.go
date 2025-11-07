@@ -146,7 +146,7 @@ func (x *AuthenticateEmailRequest) GetUsername() string {
 	return ""
 }
 
-type SessionResponse struct {
+type TokenResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Error         *status.Status         `protobuf:"bytes,1,opt,name=error,proto3" json:"error,omitempty"`
 	Created       bool                   `protobuf:"varint,2,opt,name=created,proto3" json:"created,omitempty"`
@@ -157,20 +157,20 @@ type SessionResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *SessionResponse) Reset() {
-	*x = SessionResponse{}
+func (x *TokenResponse) Reset() {
+	*x = TokenResponse{}
 	mi := &file_api_v1_account_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *SessionResponse) String() string {
+func (x *TokenResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*SessionResponse) ProtoMessage() {}
+func (*TokenResponse) ProtoMessage() {}
 
-func (x *SessionResponse) ProtoReflect() protoreflect.Message {
+func (x *TokenResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_api_v1_account_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -182,40 +182,40 @@ func (x *SessionResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use SessionResponse.ProtoReflect.Descriptor instead.
-func (*SessionResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use TokenResponse.ProtoReflect.Descriptor instead.
+func (*TokenResponse) Descriptor() ([]byte, []int) {
 	return file_api_v1_account_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *SessionResponse) GetError() *status.Status {
+func (x *TokenResponse) GetError() *status.Status {
 	if x != nil {
 		return x.Error
 	}
 	return nil
 }
 
-func (x *SessionResponse) GetCreated() bool {
+func (x *TokenResponse) GetCreated() bool {
 	if x != nil {
 		return x.Created
 	}
 	return false
 }
 
-func (x *SessionResponse) GetToken() string {
+func (x *TokenResponse) GetToken() string {
 	if x != nil {
 		return x.Token
 	}
 	return ""
 }
 
-func (x *SessionResponse) GetRefreshToken() string {
+func (x *TokenResponse) GetRefreshToken() string {
 	if x != nil {
 		return x.RefreshToken
 	}
 	return ""
 }
 
-func (x *SessionResponse) GetUserInfo() *UserInfo {
+func (x *TokenResponse) GetUserInfo() *UserInfo {
 	if x != nil {
 		return x.UserInfo
 	}
@@ -365,8 +365,8 @@ const file_api_v1_account_proto_rawDesc = "" +
 	"\x18AuthenticateEmailRequest\x126\n" +
 	"\aaccount\x18\x01 \x01(\v2\x1c.appsets.api.v1.AccountEmailR\aaccount\x122\n" +
 	"\x06create\x18\x02 \x01(\v2\x1a.google.protobuf.BoolValueR\x06create\x12\x1a\n" +
-	"\busername\x18\x03 \x01(\tR\busername\"\xc7\x01\n" +
-	"\x0fSessionResponse\x12(\n" +
+	"\busername\x18\x03 \x01(\tR\busername\"\xc5\x01\n" +
+	"\rTokenResponse\x12(\n" +
 	"\x05error\x18\x01 \x01(\v2\x12.google.rpc.StatusR\x05error\x12\x18\n" +
 	"\acreated\x18\x02 \x01(\bR\acreated\x12\x14\n" +
 	"\x05token\x18\x03 \x01(\tR\x05token\x12#\n" +
@@ -381,10 +381,10 @@ const file_api_v1_account_proto_rawDesc = "" +
 	"\x05email\x18\x05 \x01(\tR\x05email\x12\x14\n" +
 	"\x05phone\x18\x06 \x01(\tR\x05phone\"+\n" +
 	"\x13RefreshTokenRequest\x12\x14\n" +
-	"\x05token\x18\x01 \x01(\tR\x05token2\x9e\x02\n" +
-	"\x0eAccountService\x12\x85\x01\n" +
-	"\x11AuthenticateEmail\x12(.appsets.api.v1.AuthenticateEmailRequest\x1a\x1f.appsets.api.v1.SessionResponse\"%\x82\xd3\xe4\x93\x02\x1f:\x01*\"\x1a/api/v1/authenticate/email\x12\x83\x01\n" +
-	"\fRefreshToken\x12#.appsets.api.v1.RefreshTokenRequest\x1a\x1f.appsets.api.v1.SessionResponse\"-\x82\xd3\xe4\x93\x02':\x01*\"\"/api/v1/authenticate/token/refreshB-Z+github.com/appsets/protocol/go/api/v1;apipbb\x06proto3"
+	"\x05token\x18\x01 \x01(\tR\x05token2\x9a\x02\n" +
+	"\x0eAccountService\x12\x83\x01\n" +
+	"\x11AuthenticateEmail\x12(.appsets.api.v1.AuthenticateEmailRequest\x1a\x1d.appsets.api.v1.TokenResponse\"%\x82\xd3\xe4\x93\x02\x1f:\x01*\"\x1a/api/v1/authenticate/email\x12\x81\x01\n" +
+	"\fRefreshToken\x12#.appsets.api.v1.RefreshTokenRequest\x1a\x1d.appsets.api.v1.TokenResponse\"-\x82\xd3\xe4\x93\x02':\x01*\"\"/api/v1/authenticate/token/refreshB-Z+github.com/appsets/protocol/go/api/v1;apipbb\x06proto3"
 
 var (
 	file_api_v1_account_proto_rawDescOnce sync.Once
@@ -402,7 +402,7 @@ var file_api_v1_account_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_api_v1_account_proto_goTypes = []any{
 	(*AccountEmail)(nil),             // 0: appsets.api.v1.AccountEmail
 	(*AuthenticateEmailRequest)(nil), // 1: appsets.api.v1.AuthenticateEmailRequest
-	(*SessionResponse)(nil),          // 2: appsets.api.v1.SessionResponse
+	(*TokenResponse)(nil),            // 2: appsets.api.v1.TokenResponse
 	(*UserInfo)(nil),                 // 3: appsets.api.v1.UserInfo
 	(*RefreshTokenRequest)(nil),      // 4: appsets.api.v1.RefreshTokenRequest
 	nil,                              // 5: appsets.api.v1.AccountEmail.VarsEntry
@@ -413,12 +413,12 @@ var file_api_v1_account_proto_depIdxs = []int32{
 	5, // 0: appsets.api.v1.AccountEmail.vars:type_name -> appsets.api.v1.AccountEmail.VarsEntry
 	0, // 1: appsets.api.v1.AuthenticateEmailRequest.account:type_name -> appsets.api.v1.AccountEmail
 	6, // 2: appsets.api.v1.AuthenticateEmailRequest.create:type_name -> google.protobuf.BoolValue
-	7, // 3: appsets.api.v1.SessionResponse.error:type_name -> google.rpc.Status
-	3, // 4: appsets.api.v1.SessionResponse.user_info:type_name -> appsets.api.v1.UserInfo
+	7, // 3: appsets.api.v1.TokenResponse.error:type_name -> google.rpc.Status
+	3, // 4: appsets.api.v1.TokenResponse.user_info:type_name -> appsets.api.v1.UserInfo
 	1, // 5: appsets.api.v1.AccountService.AuthenticateEmail:input_type -> appsets.api.v1.AuthenticateEmailRequest
 	4, // 6: appsets.api.v1.AccountService.RefreshToken:input_type -> appsets.api.v1.RefreshTokenRequest
-	2, // 7: appsets.api.v1.AccountService.AuthenticateEmail:output_type -> appsets.api.v1.SessionResponse
-	2, // 8: appsets.api.v1.AccountService.RefreshToken:output_type -> appsets.api.v1.SessionResponse
+	2, // 7: appsets.api.v1.AccountService.AuthenticateEmail:output_type -> appsets.api.v1.TokenResponse
+	2, // 8: appsets.api.v1.AccountService.RefreshToken:output_type -> appsets.api.v1.TokenResponse
 	7, // [7:9] is the sub-list for method output_type
 	5, // [5:7] is the sub-list for method input_type
 	5, // [5:5] is the sub-list for extension type_name

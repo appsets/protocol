@@ -17,12 +17,12 @@ class AccountServiceStub(object):
         self.AuthenticateEmail = channel.unary_unary(
                 '/appsets.api.v1.AccountService/AuthenticateEmail',
                 request_serializer=api_dot_v1_dot_account__pb2.AuthenticateEmailRequest.SerializeToString,
-                response_deserializer=api_dot_v1_dot_account__pb2.SessionResponse.FromString,
+                response_deserializer=api_dot_v1_dot_account__pb2.TokenResponse.FromString,
                 _registered_method=True)
         self.RefreshToken = channel.unary_unary(
                 '/appsets.api.v1.AccountService/RefreshToken',
                 request_serializer=api_dot_v1_dot_account__pb2.RefreshTokenRequest.SerializeToString,
-                response_deserializer=api_dot_v1_dot_account__pb2.SessionResponse.FromString,
+                response_deserializer=api_dot_v1_dot_account__pb2.TokenResponse.FromString,
                 _registered_method=True)
 
 
@@ -51,12 +51,12 @@ def add_AccountServiceServicer_to_server(servicer, server):
             'AuthenticateEmail': grpc.unary_unary_rpc_method_handler(
                     servicer.AuthenticateEmail,
                     request_deserializer=api_dot_v1_dot_account__pb2.AuthenticateEmailRequest.FromString,
-                    response_serializer=api_dot_v1_dot_account__pb2.SessionResponse.SerializeToString,
+                    response_serializer=api_dot_v1_dot_account__pb2.TokenResponse.SerializeToString,
             ),
             'RefreshToken': grpc.unary_unary_rpc_method_handler(
                     servicer.RefreshToken,
                     request_deserializer=api_dot_v1_dot_account__pb2.RefreshTokenRequest.FromString,
-                    response_serializer=api_dot_v1_dot_account__pb2.SessionResponse.SerializeToString,
+                    response_serializer=api_dot_v1_dot_account__pb2.TokenResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -85,7 +85,7 @@ class AccountService(object):
             target,
             '/appsets.api.v1.AccountService/AuthenticateEmail',
             api_dot_v1_dot_account__pb2.AuthenticateEmailRequest.SerializeToString,
-            api_dot_v1_dot_account__pb2.SessionResponse.FromString,
+            api_dot_v1_dot_account__pb2.TokenResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -112,7 +112,7 @@ class AccountService(object):
             target,
             '/appsets.api.v1.AccountService/RefreshToken',
             api_dot_v1_dot_account__pb2.RefreshTokenRequest.SerializeToString,
-            api_dot_v1_dot_account__pb2.SessionResponse.FromString,
+            api_dot_v1_dot_account__pb2.TokenResponse.FromString,
             options,
             channel_credentials,
             insecure,

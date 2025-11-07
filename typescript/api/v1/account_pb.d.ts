@@ -66,9 +66,9 @@ export declare type AuthenticateEmailRequest = Message<"appsets.api.v1.Authentic
 export declare const AuthenticateEmailRequestSchema: GenMessage<AuthenticateEmailRequest>;
 
 /**
- * @generated from message appsets.api.v1.SessionResponse
+ * @generated from message appsets.api.v1.TokenResponse
  */
-export declare type SessionResponse = Message<"appsets.api.v1.SessionResponse"> & {
+export declare type TokenResponse = Message<"appsets.api.v1.TokenResponse"> & {
   /**
    * @generated from field: google.rpc.Status error = 1;
    */
@@ -96,10 +96,10 @@ export declare type SessionResponse = Message<"appsets.api.v1.SessionResponse"> 
 };
 
 /**
- * Describes the message appsets.api.v1.SessionResponse.
- * Use `create(SessionResponseSchema)` to create a new message.
+ * Describes the message appsets.api.v1.TokenResponse.
+ * Use `create(TokenResponseSchema)` to create a new message.
  */
-export declare const SessionResponseSchema: GenMessage<SessionResponse>;
+export declare const TokenResponseSchema: GenMessage<TokenResponse>;
 
 /**
  * @generated from message appsets.api.v1.UserInfo
@@ -171,7 +171,7 @@ export declare const AccountService: GenService<{
   authenticateEmail: {
     methodKind: "unary";
     input: typeof AuthenticateEmailRequestSchema;
-    output: typeof SessionResponseSchema;
+    output: typeof TokenResponseSchema;
   },
   /**
    * buf:lint:ignore RPC_REQUEST_RESPONSE_UNIQUE
@@ -182,7 +182,7 @@ export declare const AccountService: GenService<{
   refreshToken: {
     methodKind: "unary";
     input: typeof RefreshTokenRequestSchema;
-    output: typeof SessionResponseSchema;
+    output: typeof TokenResponseSchema;
   },
 }>;
 

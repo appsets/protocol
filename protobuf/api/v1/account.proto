@@ -19,7 +19,7 @@ message AuthenticateEmailRequest {
   string username = 3;
 }
 
-message SessionResponse {
+message TokenResponse {
   google.rpc.Status error = 1;
   bool created = 2;
   string token = 3;
@@ -45,7 +45,7 @@ message RefreshTokenRequest {
 service AccountService {
   // buf:lint:ignore RPC_REQUEST_RESPONSE_UNIQUE
   // buf:lint:ignore RPC_RESPONSE_STANDARD_NAME
-  rpc AuthenticateEmail(AuthenticateEmailRequest) returns (SessionResponse) {
+  rpc AuthenticateEmail(AuthenticateEmailRequest) returns (TokenResponse) {
     option (google.api.http) = {
       post: "/api/v1/authenticate/email"
       body: "*"
@@ -53,7 +53,7 @@ service AccountService {
   }
   // buf:lint:ignore RPC_REQUEST_RESPONSE_UNIQUE
   // buf:lint:ignore RPC_RESPONSE_STANDARD_NAME
-  rpc RefreshToken(RefreshTokenRequest) returns (SessionResponse) {
+  rpc RefreshToken(RefreshTokenRequest) returns (TokenResponse) {
     option (google.api.http) = {
       post: "/api/v1/authenticate/token/refresh"
       body: "*"
