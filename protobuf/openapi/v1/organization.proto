@@ -1,0 +1,25 @@
+syntax = "proto3";
+package appsets.openapi.v1;
+option go_package = "github.com/appsets/protocol/go/openapi/v1;openapipb";
+
+import "google/api/annotations.proto";
+
+message CreateOrganizationRequest {
+  string id = 1;
+  string code = 2;
+  string name = 3;
+  string owned_by = 4;
+  string created_by = 5;
+}
+
+message CreateOrganizationResponse {
+}
+
+service OrganizationService {
+  rpc CreateOrganization(CreateOrganizationRequest) returns (CreateOrganizationResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/organization/create"
+      body: "*"
+    };
+  }
+}

@@ -1,0 +1,61 @@
+syntax = "proto3";
+package appsets.api.v1;
+
+option go_package = "github.com/appsets/protocol/go/api/v1;apipb";
+
+import "google/api/annotations.proto";
+
+message InitializePurchaseAlipayRequest {
+  string product_type = 1;
+  string product_id = 2;
+  int64 count = 3;
+  int64 price = 4;
+  int64 actual_price = 5;
+  int64 total_amount = 6;
+  int64 actual_total_amount = 7;
+  string comment = 8;
+  map<string, string> metadata = 9;
+}
+
+message InitializePurchaseAlipayResponse {
+  string transaction_id = 1;
+  string payload = 2;
+  int64 expired_at = 3;
+}
+
+message ValidatePurchaseAlipayRequest {
+}
+
+message ValidatePurchaseAlipayResponse {
+
+}
+
+message CancelPurchaseRequest {
+  string transaction_id = 1;
+}
+
+message CancelPurchaseResponse {
+}
+
+service PurchaseService {
+  rpc InitializePurchaseAlipay(InitializePurchaseAlipayRequest) returns (InitializePurchaseAlipayResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/purchase/alipay/initialize"
+      body: "*"
+    };
+  }
+
+  rpc ValidatePurchaseAlipay(ValidatePurchaseAlipayRequest) returns (ValidatePurchaseAlipayResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/purchase/alipay/validate"
+      body: "*"
+    };
+  }
+
+  rpc CancelPurchase(CancelPurchaseRequest) returns (CancelPurchaseResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/purchase/cancel"
+      body: "*"
+    };
+  }
+}

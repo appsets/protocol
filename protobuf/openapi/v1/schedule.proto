@@ -1,0 +1,21 @@
+syntax = "proto3";
+package appsets.openapi.v1;
+option go_package = "github.com/appsets/protocol/go/openapi/v1;openapipb";
+
+import "google/api/annotations.proto";
+
+message ValidatePurchasesRequest {
+}
+
+message ValidatePurchasesResponse {
+
+}
+
+service ScheduleService {
+  rpc ValidatePurchases(ValidatePurchasesRequest) returns (ValidatePurchasesResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/schedule/purchase/validate"
+      body: "*"
+    };
+  }
+}

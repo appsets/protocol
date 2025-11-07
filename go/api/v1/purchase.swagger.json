@@ -1,0 +1,218 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "api/v1/purchase.proto",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "PurchaseService"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/v1/purchase/alipay/initialize": {
+      "post": {
+        "operationId": "PurchaseService_InitializePurchaseAlipay",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1InitializePurchaseAlipayResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1InitializePurchaseAlipayRequest"
+            }
+          }
+        ],
+        "tags": [
+          "PurchaseService"
+        ]
+      }
+    },
+    "/api/v1/purchase/alipay/validate": {
+      "post": {
+        "operationId": "PurchaseService_ValidatePurchaseAlipay",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1ValidatePurchaseAlipayResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1ValidatePurchaseAlipayRequest"
+            }
+          }
+        ],
+        "tags": [
+          "PurchaseService"
+        ]
+      }
+    },
+    "/api/v1/purchase/cancel": {
+      "post": {
+        "operationId": "PurchaseService_CancelPurchase",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1CancelPurchaseResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1CancelPurchaseRequest"
+            }
+          }
+        ],
+        "tags": [
+          "PurchaseService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": {}
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "v1CancelPurchaseRequest": {
+      "type": "object",
+      "properties": {
+        "transactionId": {
+          "type": "string"
+        }
+      }
+    },
+    "v1CancelPurchaseResponse": {
+      "type": "object"
+    },
+    "v1InitializePurchaseAlipayRequest": {
+      "type": "object",
+      "properties": {
+        "productType": {
+          "type": "string"
+        },
+        "productId": {
+          "type": "string"
+        },
+        "count": {
+          "type": "string",
+          "format": "int64"
+        },
+        "price": {
+          "type": "string",
+          "format": "int64"
+        },
+        "actualPrice": {
+          "type": "string",
+          "format": "int64"
+        },
+        "totalAmount": {
+          "type": "string",
+          "format": "int64"
+        },
+        "actualTotalAmount": {
+          "type": "string",
+          "format": "int64"
+        },
+        "comment": {
+          "type": "string"
+        },
+        "metadata": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "v1InitializePurchaseAlipayResponse": {
+      "type": "object",
+      "properties": {
+        "transactionId": {
+          "type": "string"
+        },
+        "payload": {
+          "type": "string"
+        },
+        "expiredAt": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "v1ValidatePurchaseAlipayRequest": {
+      "type": "object"
+    },
+    "v1ValidatePurchaseAlipayResponse": {
+      "type": "object"
+    }
+  }
+}
